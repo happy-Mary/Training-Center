@@ -1,0 +1,21 @@
+{
+  "name": "exam-task",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Maria Shklovskaya"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/happy-Mary/Training-Center",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "bootstrap": "^3.3.7",
+    "matchHeight": "matchheight#^0.7.2"
+  }
+}
