@@ -14,11 +14,11 @@
     // вид товара
     App.Views.Product = Backbone.View.extend({
         tagName: 'div',
-        className: 'item col-sm-6',
+        className: 'item',
         template: template('productTemplate'),
-        render: function() {
-            console.log('build inside');
+        render: function(gridClass) {
             var template = this.template(this.model.toJSON());
+            this.$el.addClass(gridClass);
             this.$el.html(template);
             return this;
         }
@@ -34,9 +34,27 @@
         tagName: 'div',
         className: 'container',
         render: function() {
-            console.log('build outside');
-            console.log(this.collection);
-            this.collection.each(this.addOne, this);
+            var all = this.collection.length;
+            var itemCount = parseInt($('input[name="paginate"]:checked').val());
+            // var itemCount = 6;
+            var gridCount = 12 / itemCount;
+            // количество рядов
+            var countRows = Math.ceil(all / itemCount);
+
+            for (var prod = 0, r = 1; r <= countRows; r++) {
+                var row = $('<div class = "row"></div>');
+                for (var i = 1; i <= itemCount; i++) {
+                    if (prod > all - 1) { this.$el.append(row); } else {
+                        var product = this.collection.models[prod];
+                        var productView = new App.Views.Product({ model: product });
+                        var gridClass = "col-sm-" + gridCount;
+                        var newItem = productView.render(gridClass).el;
+                        row.append(newItem);
+                        prod++;
+                    }
+                }
+                this.$el.append(row);
+            }
             return this;
         },
         addOne: function(product) {
