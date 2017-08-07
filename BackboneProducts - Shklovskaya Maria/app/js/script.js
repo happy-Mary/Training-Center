@@ -87,26 +87,25 @@
         },
 
         checkAccess: function(model, user){
-            // //////////////////////////////
             model.set('readible', 'true');
             model.set('rewritable', 'false');
             model.set('removable', 'false');
             model.set('addible', 'false');
-            // console.log(model.get('readible'));
+           
             if (user.role === 'admin') {
                 model.set('rewritable', 'true');
                 model.set('removable', 'true');
                 model.set('addible', 'true');
-            } else if(user.role === 'user'){
+            } else if(user.role === 'user'&& user.userId !== model.get('self_id')){
                 model.set('addible', 'true');
             } else if(user.role === "user" && user.userId === model.get('self_id') || user.role === "admin" && user.userId === model.get('self_id')){
                 // для админа оставить только лэйбу
                 // itemOwn.css('display', 'block');
+                model.set('addible', 'true');
                 model.set('rewritable', 'true');
                 model.set('removable', 'true');
             }
              return model;
-            // //////////////////////////////
         }
        
     });
@@ -138,14 +137,11 @@
             buildGrid();
         }
     }
-
+    // rebuilding grid
     function buildGrid() {
         Products.productsView = new App.Views.Products({ collection: Products.productsCollection });
         $('.items-goods').html(Products.productsView.render().el);
     }
-
-    // first loading content
-    getGoodsFirstTime();
 
     // внешние события
     // change grid
@@ -160,20 +156,53 @@
     var paginateRadio = $('input[name="paginate"]');
     paginateRadio.change(function() { 
         Products.productsView.remove(); 
-         Products.productsView = new App.Views.Products({ collection: Products.productsCollection });
+        Products.productsView = new App.Views.Products({ collection: Products.productsCollection });
         $('.items-goods').html(Products.productsView.render().el); 
     });
+    // change user
+    $('.sendUserButton').click(function(){
+        var name = $('#loginName').val();
+        var password =  $('#loginPass').val();
+        changeUser(name, password);
+    });
 
+      //first loading content
+        getGoodsFirstTime();
 
-    // User class
+    
+     // User class
     function User(id, name, password, role) {
-        // this.userId = id || 0;
-        this.userId = 100;
-        // this.name = name || "Anonim";
-        this.name = "Admin";
+        this.userId = id || 0;
+        this.name = name || "Anonim";
         this.password = password || null;
-        // this.role = role || "anonim";
-        this.role = "admin";
+        this.role = role || "anonim";
+    }
+
+    // ????? создать вью для общего контейнера ???
+    var closeModal = function(modalId) {
+        $(modalId).modal('hide');
+    }
+
+    var openModal = function(modalId) {
+        $(modalId).modal('show');
+    }
+
+    function changeUser(name, password) {
+        $.ajax({ url: "json/users.json", success: checkUser });
+        
+            function checkUser(allUsers) {
+                $.each(allUsers, function(i) {
+                if (allUsers[i].name === name && allUsers[i].password === password) {
+                    Products.user = allUsers[i];
+                    localStorage.setItem("user", JSON.stringify(Products.user));
+                    buildGrid();
+                    closeModal('#loginModal');
+                    return false;
+                } else {
+                    $('.text-danger').html("We didn't find you! <br/> Please try again.");
+                }
+            });     
+        }
     }
 
 
