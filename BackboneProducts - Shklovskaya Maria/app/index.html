@@ -25,130 +25,138 @@
 <body>
 
     <div class="shopContainer">
-        <!-- MODALS -->
-        <!-- 1. Login modal  -->
-        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Log in</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form action="" name="loginForm">
-                            <div class="form-group">
-                                <label for="loginName">Enter your name:</label>
-                                <input type="text" class="form-control" placeholder="Name" id="loginName" autofocus required>
+        <div class="modal-windows">
+            <!-- MODALS -->
+            <!-- 1. Login modal  -->
+            <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">Log in</h4>
                             </div>
-                            <div class="form-group">
-                                <label for="loginPass">Enter your password:</label>
-                                <input type="password" class="form-control" placeholder="Password" id="loginPass" required>
+                            <div class="modal-body">
+                                <form action="" name="loginForm">
+                                    <div class="form-group">
+                                        <label for="loginName">Enter your name:</label>
+                                        <input type="text" class="form-control" placeholder="Name" id="loginName" autofocus required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="loginPass">Enter your password:</label>
+                                        <input type="password" class="form-control" placeholder="Password" id="loginPass" required>
+                                    </div>
+                                </form>
+                                <p class="text-danger error-login"></p>
                             </div>
-                        </form>
-                        <p class="text-danger error-login"></p>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary sendUserButton">Log in</button>
+                                <button type="button" class="btn btn-info sendAnonimUser">Log in as Anonim</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary sendUserButton">Log in</button>
-                        <button type="button" class="btn btn-info sendAnonimUser">Log in as Anonim</button>
+            </div>
+            <!-- 2. Description modal  -->
+            <!--  -->
+            <!--TEMPLATE  -->
+            <script type="text/template" id="descriptionTemplate">
+            <div class="modal fade" id="descriptionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> 
+                                <h4 class="modal-title" id="myModalLabel"><%= title %></h4>
+                            </div>
+                            <div class="modal-body">
+                                <img src="<%= image %>" alt="item" class="image-responsive modal-img">
+                                <p><%= description %></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <!-- 2. Description modal  -->
-        <div class="modal fade" id="descriptionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                    </div>
-                    <div class="modal-body">
-                        <img src="" alt="item" class="image-responsive modal-img">
-                        <p></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+                </script>
+                <!--  -->
+                <!-- 3. Rewrite modal  -->
+            <div class="modal fade" id="rewriteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Write and save your changes</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form action="" name="itemForm">
+                                <div class="form-group">
+                                    <label for="itemRewriteId">Product id:</label>
+                                    <input type="number" class="form-control" id="itemRewriteId" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="itemRewriteTitle">Title:</label>
+                                    <input type="text" class="form-control" id="itemRewriteTitle">
+                                </div>
+                                <div class="form-group">
+                                    <label for="itemRewritePrice">Price:</label>
+                                    <input type="number" class="form-control" id="itemRewritePrice">
+                                </div>
 
-        <!-- 3. Rewrite modal  -->
-        <div class="modal fade" id="rewriteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Write and save your changes</h4>
+                                <label for="itemRewriteDescr">Description:</label>
+                                <textarea class="form-control" rows="6" id="itemRewriteDescr"></textarea>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-warning saveChanges">Save changes</button>
+                        </div>
                     </div>
-                    <div class="modal-body">
-                        <form action="" name="itemForm">
-                            <div class="form-group">
-                                <label for="itemRewriteId">Product id:</label>
-                                <input type="number" class="form-control" id="itemRewriteId" disabled>
-                            </div>
-                            <div class="form-group">
-                                <label for="itemRewriteTitle">Title:</label>
-                                <input type="text" class="form-control" id="itemRewriteTitle">
-                            </div>
-                            <div class="form-group">
-                                <label for="itemRewritePrice">Price:</label>
-                                <input type="number" class="form-control" id="itemRewritePrice">
-                            </div>
+                </div>
+            </div>
+            <!-- 4. Add new Item modal  -->
+            <div class="modal fade" id="addItemModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Write and save your changes</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form action="" name="addItemForm">
+                                <!-- item id  -->
+                                <div class="form-group">
+                                    <label for="itemId">Enter ID of the product:</label>
+                                    <input type="number" class="form-control" id="itemId" required>
+                                </div>
+                                <!-- category -->
+                                <div class="form-group">
+                                    <label for="itemCategory">Choose category:</label>
+                                    <select class="form-control" id="itemCategory" required aria-required="true">
+                                        <option value="">Choose</option>
+                                        <option value="tablets">Tablets</option>
+                                        <option value="laptops">Laptops</option>
+                                        <option value="phones">Phones</option>
+                                        <option value="desktops">Desktops</option>
+                                    </select>
+                                </div>
+                                <!-- title  -->
+                                <div class="form-group">
+                                    <label for="itemAddTitle">Title:</label>
+                                    <input type="text" class="form-control" id="itemAddTitle" required>
+                                </div>
+                                <!-- price  -->
+                                <div class="form-group">
+                                    <label for="itemAddPrice">Price:</label>
+                                    <input type="number" class="form-control" id="itemAddPrice" required>
+                                </div>
+                                <!--description  -->
+                                <label for="itemAddDescr">Description:</label>
+                                <textarea class="form-control" rows="6" id="itemAddDescr"></textarea>
+                                <button type="submit" class="btn btn-warning addNewItem">Save changes</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- MODAL ENDS -->
+        <div>
+    
 
-                            <label for="itemRewriteDescr">Description:</label>
-                            <textarea class="form-control" rows="6" id="itemRewriteDescr"></textarea>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-warning saveChanges">Save changes</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- 4. Add new Item modal  -->
-        <div class="modal fade" id="addItemModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Write and save your changes</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form action="" name="addItemForm">
-                            <!-- item id  -->
-                            <div class="form-group">
-                                <label for="itemId">Enter ID of the product:</label>
-                                <input type="number" class="form-control" id="itemId" required>
-                            </div>
-                            <!-- category -->
-                            <div class="form-group">
-                                <label for="itemCategory">Choose category:</label>
-                                <select class="form-control" id="itemCategory" required aria-required="true">
-                <option value="">Choose</option>
-                <option value="tablets">Tablets</option>
-                <option value="laptops">Laptops</option>
-                <option value="phones">Phones</option>
-                <option value="desktops">Desktops</option>
-              </select>
-                            </div>
-                            <!-- title  -->
-                            <div class="form-group">
-                                <label for="itemAddTitle">Title:</label>
-                                <input type="text" class="form-control" id="itemAddTitle" required>
-                            </div>
-                            <!-- price  -->
-                            <div class="form-group">
-                                <label for="itemAddPrice">Price:</label>
-                                <input type="number" class="form-control" id="itemAddPrice" required>
-                            </div>
-                            <!--description  -->
-                            <label for="itemAddDescr">Description:</label>
-                            <textarea class="form-control" rows="6" id="itemAddDescr"></textarea>
-                            <button type="submit" class="btn btn-warning addNewItem">Save changes</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- MODAL ENDS -->
         <!-- log in  -->
         <header class="container">
             <div class="row">
@@ -184,7 +192,7 @@
                 </div>
             </section>
             <!--  main content -->
-            <section class="items-goods">
+            <section class="items-goods container">
                 <script type="text/template" id="productTemplate">
                     <div class='item-content'>
                         <p class='price'>
