@@ -1,5 +1,7 @@
 (function() {
 
+    var LocalStorage = require('backbone.localstorage');
+
     var App = {
         Models: {},
         Views: {},
