@@ -24,9 +24,113 @@
 
 <body>
 
+    <div class="modalTemplates">
+        <!-- Description modal TEMPLATE  -->
+        <script type="text/template" id="descriptionTemplate">
+            <div class="modal fade" id="descriptionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> 
+                            <h4 class="modal-title" id="myModalLabel"><%= title %></h4>
+                        </div>
+                        <div class="modal-body">
+                            <img src="<%= image %>" alt="item" class="image-responsive modal-img">
+                            <p><%= description %></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </script>
+        <!-- Rewrite modal TEMPLATE  -->
+        <script type="text/template" id="rewriteTemplate">
+            <div class="modal fade" id="rewriteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Write and save your changes</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form action="" name="itemForm">
+                                <div class="form-group">
+                                    <label for="itemRewriteId">Product id:</label>
+                                    <input type="number" class="form-control" id="itemRewriteId" name="self_id" value="<%= self_id %>" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="itemRewriteTitle">Title:</label>
+                                    <input type="text" class="form-control" id="itemRewriteTitle" name="title" value = "<%= title %>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="itemRewritePrice">Price:</label>
+                                    <input type="number" class="form-control" id="itemRewritePrice" name="price" value = "<%= price %>">
+                                </div>
+
+                                <label for="itemRewriteDescr">Description:</label>
+                                <textarea class="form-control" rows="6" id="itemRewriteDescr"  name="description"><%= description %></textarea>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-warning saveChanges">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </script>
+    </div>
+
     <div class="shopContainer">
         <div class="modal-windows">
-            <!-- MODALS -->
+            <!-- MODALS --> 
+            <!-- Add new Item modal  -->
+            <div class="modal fade" id="addItemModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Write and save your changes</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form action="" name="addItemForm">
+                                <!-- item id  -->
+                                <div class="form-group">
+                                    <label for="itemId">Enter ID of the product:</label>
+                                    <input type="number" class="form-control" id="itemId" name="sel_id" required>
+                                </div>
+                                <!-- category -->
+                                <div class="form-group">
+                                    <label for="itemCategory">Choose category:</label>
+                                    <select class="form-control" id="itemCategory"  name="category" required aria-required="true">
+                                        <option value="">Choose</option>
+                                        <option value="tablets">Tablets</option>
+                                        <option value="laptops">Laptops</option>
+                                        <option value="phones">Phones</option>
+                                        <option value="desktops">Desktops</option>
+                                    </select>
+                                </div>
+                                <!-- title  -->
+                                <div class="form-group">
+                                    <label for="itemAddTitle">Title:</label>
+                                    <input type="text" class="form-control" id="itemAddTitle" name="title" required>
+                                </div>
+                                <!-- price  -->
+                                <div class="form-group">
+                                    <label for="itemAddPrice">Price:</label>
+                                    <input type="number" class="form-control" id="itemAddPrice" name="price" required>
+                                </div>
+                                <!--description  -->
+                                <label for="itemAddDescr">Description:</label>
+                                <textarea class="form-control" rows="6" id="itemAddDescr"  name="description"></textarea>
+                                <button type="submit" class="btn btn-warning addNewItem">Save changes</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- MODAL ENDS -->
+        </div>
+
+        <div class="login-modal">
             <!-- 1. Login modal  -->
             <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                     <div class="modal-dialog" role="document">
@@ -55,107 +159,7 @@
                         </div>
                     </div>
             </div>
-            <!-- 2. Description modal  -->
-            <!--  -->
-            <!--TEMPLATE  -->
-            <script type="text/template" id="descriptionTemplate">
-            <div class="modal fade" id="descriptionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> 
-                                <h4 class="modal-title" id="myModalLabel"><%= title %></h4>
-                            </div>
-                            <div class="modal-body">
-                                <img src="<%= image %>" alt="item" class="image-responsive modal-img">
-                                <p><%= description %></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </script>
-                <!--  -->
-                <!-- 3. Rewrite modal  -->
-            <div class="modal fade" id="rewriteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel">Write and save your changes</h4>
-                        </div>
-                        <div class="modal-body">
-                            <form action="" name="itemForm">
-                                <div class="form-group">
-                                    <label for="itemRewriteId">Product id:</label>
-                                    <input type="number" class="form-control" id="itemRewriteId" disabled>
-                                </div>
-                                <div class="form-group">
-                                    <label for="itemRewriteTitle">Title:</label>
-                                    <input type="text" class="form-control" id="itemRewriteTitle">
-                                </div>
-                                <div class="form-group">
-                                    <label for="itemRewritePrice">Price:</label>
-                                    <input type="number" class="form-control" id="itemRewritePrice">
-                                </div>
-
-                                <label for="itemRewriteDescr">Description:</label>
-                                <textarea class="form-control" rows="6" id="itemRewriteDescr"></textarea>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-warning saveChanges">Save changes</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- 4. Add new Item modal  -->
-            <div class="modal fade" id="addItemModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel">Write and save your changes</h4>
-                        </div>
-                        <div class="modal-body">
-                            <form action="" name="addItemForm">
-                                <!-- item id  -->
-                                <div class="form-group">
-                                    <label for="itemId">Enter ID of the product:</label>
-                                    <input type="number" class="form-control" id="itemId" required>
-                                </div>
-                                <!-- category -->
-                                <div class="form-group">
-                                    <label for="itemCategory">Choose category:</label>
-                                    <select class="form-control" id="itemCategory" required aria-required="true">
-                                        <option value="">Choose</option>
-                                        <option value="tablets">Tablets</option>
-                                        <option value="laptops">Laptops</option>
-                                        <option value="phones">Phones</option>
-                                        <option value="desktops">Desktops</option>
-                                    </select>
-                                </div>
-                                <!-- title  -->
-                                <div class="form-group">
-                                    <label for="itemAddTitle">Title:</label>
-                                    <input type="text" class="form-control" id="itemAddTitle" required>
-                                </div>
-                                <!-- price  -->
-                                <div class="form-group">
-                                    <label for="itemAddPrice">Price:</label>
-                                    <input type="number" class="form-control" id="itemAddPrice" required>
-                                </div>
-                                <!--description  -->
-                                <label for="itemAddDescr">Description:</label>
-                                <textarea class="form-control" rows="6" id="itemAddDescr"></textarea>
-                                <button type="submit" class="btn btn-warning addNewItem">Save changes</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- MODAL ENDS -->
-        <div>
-    
+        </div>
 
         <!-- log in  -->
         <header class="container">
@@ -203,11 +207,9 @@
                             <%= title %>
                         </h4>
                     </div>
-                    <!--  -->
-                    
                     <div class="btn-group-vertical item-buttons" role="group">
                         <button class="btn btn-primary open-but" <% if(readible =='false') { %>disabled<% } else { %>"" <% }%>><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></button>
-                        <button class="btn btn-primary rewite-but" <% if(rewritable =='false') {%>disabled<% } else { %>"" <% }%> ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
+                        <button class="btn btn-primary rewrite-but" <% if(rewritable =='false') {%>disabled<% } else { %>"" <% }%> ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
                         <button class="btn btn-primary remove-but" <% if(removable =='false') {%>disabled<% } else { %>"" <% }%> ><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
                         <button class="btn btn-primary add-but" <% if(addible =='false') {%>disabled<% } else { %>"" <% }%> ><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
                     </div>
@@ -228,7 +230,7 @@
     <script src="libs/backbone/backbone-min.js"></script>
     <script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="libs/matchHeight/jquery.matchHeight.js"></script>
-    <script src="https://cdn.jsdelivr.net/backbone.localstorage/1.1.16/backbone.localStorage-min.js"></script>
+    <script src="libs/Backbone.localStorage/build/backbone.localStorage.min.js"></script>
     <!--custom script  -->
     <script src="js/script.js"></script>
 

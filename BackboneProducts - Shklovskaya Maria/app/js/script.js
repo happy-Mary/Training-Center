@@ -1,6 +1,7 @@
 (function() {
 
-    var LocalStorage = require('backbone.localstorage');
+//    var goodColl = new Backbone.LocalStorage('goods');
+//    console.log(goodColl);
 
     var App = {
         Models: {},
@@ -25,7 +26,10 @@
         className: 'item',
         template: App.template('productTemplate'),
         events: {
-            'click .open-but' : 'openModal'
+            'click .open-but' : function(){this.openProductModal('descriptionTemplate', '#descriptionModal');},
+            'click .rewrite-but' : function(){this.openProductModal('rewriteTemplate', '#rewriteModal');},
+            // 'click .remove-but' : function(){this.openProductModal('rewriteTemplate', '#rewriteModal');}, ????
+            'click .add-but' : 'addNewProduct',
         },
         initialize: function() {
             this.listenTo(this.model, 'change', this.render);
@@ -36,18 +40,68 @@
             this.$el.html(template);
             return this;
         },
-        openModal: function(){
-            $('#descriptionModal').remove();   
+        openProductModal: function(templId, modalId){
+            console.log(templId, modalId);
+            $(modalId).remove();   
             var modal = new App.Views.Modal({model: this.model});
-            console.log(Products.productsView.collection);
-            $('.modal-windows').append(modal.render().el);
+            $('.modal-windows').append(modal.render(templId, modalId).el);
+        },
+        addNewProduct: function(){
+            // добавить имг и айди
+            Products.productsView.openModal('#addItemModal');
+            var modal = new App.Views.Modal({model: new App.Models.Product()});
         }
     });
+
+    // Modal windows
+    // App.Models.Modal = Backbone.Model.extend({});
+    App.Views.Modal = Backbone.View.extend({
+        el: $('.modal-windows'),
+        events: {
+            'change input' : 'changeModel',
+            'change select' : 'changeModel',
+            'change textarea' : 'changeModel',
+            'click .saveChanges': 'saveModel',
+            'click .addNewItem' : 'saveAddModel'
+            // события сбора данных по кнопкам окон
+        },
+        render: function(templId, modalId){
+            this.modalId = modalId;
+            this.template = App.template(templId);
+            var template = this.template(this.model.toJSON());
+            this.$el.append(template);
+            Products.productsView.openModal(modalId);
+            return this;
+        },
+        changeModel: function(ev){
+            var target = ev.currentTarget;
+            console.log(target.name,target.value);
+            console.log(this.model);
+            this.model.set(target.name,target.value,  {silent: true });
+        },
+        saveModel: function(){
+            this.model.save({silent: false});
+            Products.productsView.closeModal(this.modalId);
+        },
+        saveAddModel: function(){
+            Products.productsCollection.add(this.model);
+            //  ????
+            this.model.set();
+            this.model.save({silent: false});
+            console.log(Products.productsCollection.length);
+            // Products.productsView.closeModal(this.modalId);
+        }
+    });
+
+
 
     // коллекция моделей товаров
     App.Collections.Product = Backbone.Collection.extend({
         model: App.Models.Product,
+        localStorage: new Backbone.LocalStorage('goods')
     });
+
+
 
     // коллекция видов товаров
     App.Views.Products = Backbone.View.extend({
@@ -59,6 +113,10 @@
             'click .sendUserButton': 'changeUser',
             'click .sendAnonimUser' : 'logAnonimUser',
             'click .show-more' : 'showMore'
+        },
+
+        initialize: function() {
+            // this.listenTo(this.collection, 'add', this.render);
         },
 
         render: function(paginate) {
@@ -113,18 +171,13 @@
             $('.menu a.active').removeClass('active');
             $(ev.target).addClass('active');
             var category = $(ev.target).html();
-            var obj = JSON.parse(localStorage.getItem('goods'));
-            var goods = [];
+            this.collection.fetch();
             if(category!=='all') {
-                for (var i = 0; i <= obj.length - 1; i++) {
-                    if (obj[i].category === category) {
-                        goods.push(obj[i]);
-                    }
-                }
+                var g = this.collection.where({category: category});
+                this.collection.set(g);
             } else {
-                goods = obj;
+                this.collection = this.collection;
             }
-            this.collection.set(goods);
             $('.items-goods').empty();
             $('body').append(this.render().el);    
         },
@@ -141,8 +194,6 @@
             $.ajax({ url: "json/users.json", success: function(allUsers){
                 var respond = '';
                     $.each(allUsers, function(i) {
-                        console.log(allUsers[i].name);
-                        console.log(allUsers[i].password);
                         if (allUsers[i].name === name && allUsers[i].password === password) {
                             respond = allUsers[i];
                             return false;
@@ -191,62 +242,43 @@
        
     });
 
-    // Modal windows
-    // App.Models.Modal = Backbone.Model.extend({});
-    App.Views.Modal = Backbone.View.extend({
-        el: $('.modal-windows'),
-        events: {
-            'click .close' : 'closeThisModal'
-        },
-        render: function(){
-            // console.log(this.model);
-            this.model.set({title: "hello"});
-            this.template = App.template('descriptionTemplate');
-            var template = this.template(this.model.toJSON());
-            this.$el.append(template);
-            Products.productsView.openModal('#descriptionModal');
-            return this;
-        },
-        closeThisModal: function(){
-            Products.productsView.closeModal('#descriptionModal');
-        }
-
-    });
-
+    
 
 
 
     // GET data on firs load
     // not recommended to use fetch() on first time
     function initApplication() {
-        Products.productsCollection = new App.Collections.Product();
-         // get user
+        // get user
         Products.user = JSON.parse(localStorage.getItem('user'));
-        if (Products.user === null) {
-            Products.user = new User();
-            localStorage.setItem("user", JSON.stringify(Products.user));
-        }
+            if (Products.user === null) {
+                Products.user = new User();
+                localStorage.setItem("user", JSON.stringify(Products.user));
+            }
+        Products.productsCollection = new App.Collections.Product();
         // get goods
-        var goods = JSON.parse(localStorage.getItem('goods'));
-         if (goods === null){
+        Products.productsCollection.fetch();
+         if (Products.productsCollection.length <= 0){
             $.ajax({
                 url: "json/goods.json",
                 success: function(result) {
-                    localStorage.setItem('goods', JSON.stringify(result));
                     Products.productsCollection.set(result);
+                    Products.productsCollection.models.forEach(function(model){
+                        model.save();
+                    });
                     buildGrid();
                 }
             });
-         } else {
-            Products.productsCollection.set(goods);
-            buildGrid();
-        }
+         } 
+
+        buildGrid();
     }
+
+
     // rebuilding grid
     function buildGrid() {
         console.log('building grid');
         Products.productsView = new App.Views.Products({ collection: Products.productsCollection });
-        // $('body').append(Products.productsView.render().el);
         $('.shopContainer').append(Products.productsView.render().el);
     }
     //first loading content
@@ -261,6 +293,7 @@
         this.role = role || "anonim";
     }
 
+    
 })();
 
 
