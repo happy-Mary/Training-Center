@@ -27,7 +27,7 @@
     <div class="modal-windows">
         <!-- Description modal TEMPLATE  -->
         <script type="text/template" id="descriptionTemplate">
-                <div class="modal fade" id="descriptionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal fade text-center" id="descriptionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -205,6 +205,7 @@
                         <button class="btn btn-primary remove-but" <% if(removable =='false') {%>disabled<% } else { %>"" <% }%> ><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
                         <button class="btn btn-primary add-but" data-toggle="modal" data-target="#addItemModal" <% if(addible =='false') {%>disabled<% } else { %>"" <% }%> ><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
                     </div>
+                    <!-- <span class='label label-info item-label'>my</span> -->
                 </script>
             </section>
             <!-- show more button  -->

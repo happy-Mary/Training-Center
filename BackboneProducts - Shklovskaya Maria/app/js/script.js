@@ -24,7 +24,9 @@
         "price": 0,
         "moderate": true,
         "image": "img/no-photoI.gif"
-        }
+        },
+    // ??????????????
+        // localStorage: new Backbone.LocalStorage('goods')
     });
 
     // вид товара
@@ -89,7 +91,7 @@
     // коллекция моделей товаров
     App.Collections.Product = Backbone.Collection.extend({
         model: App.Models.Product,
-        localStorage: new Backbone.LocalStorage('goods'),
+        localStorage: new Backbone.LocalStorage('goods')
     });
 
     // коллекция видов товаров
@@ -102,7 +104,8 @@
             'click .sendUserButton': 'changeUser',
             'click .sendAnonimUser' : 'logAnonimUser',
             'click .show-more' : 'showMore',
-            'submit form[name="addItemForm"]': 'createNewProduct'
+            // 'submit form[name="addItemForm"]': 'createNewProduct',
+            'click .addNewItem' : 'createNewProduct'
         },
 
         render: function(paginate) {
@@ -146,7 +149,7 @@
                 model.set('addible', 'true');
             } else if(user.role === "user" && user.userId === model.get('self_id') || user.role === "admin" && user.userId === model.get('self_id')){
                 // для админа оставить только лэйбу
-                // itemOwn.css('display', 'block');
+                // $('.item-label').css('display', 'block');
                 model.set('addible', 'true');
                 model.set('rewritable', 'true');
                 model.set('removable', 'true');
@@ -233,17 +236,19 @@
         },
 
         createNewProduct: function(event){
-            event.preventDefault();
+            // event.preventDefault();
             var self_id = Products.user.userId;
             var category = $('#itemCategory').val();
             var title = $('#itemAddTitle').val();
             var description = $('#itemAddDescr').val();
             var price = $('#itemAddPrice').val();
-            var newModel = new App.Models.Product({self_id: self_id, category: category, title: title, description: description, price: price});
-            this.collection.add(newModel, {at: 0});
-            newModel.save();
+            // var newModel = new App.Models.Product({self_id: self_id, category: category, title: title, description: description, price: price});
+            var newModel = {self_id: self_id, category: category, title: title, description: description, price: price};
+            // this.collection.add(newModel, {at: 0});
+            this.collection.create(newModel);
             this.render();
             this.closeModal('#addItemModal');
+            // newModel.save();
         }
        
     });
