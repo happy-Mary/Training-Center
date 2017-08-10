@@ -1,8 +1,5 @@
 (function() {
 
-//    var goodColl = new Backbone.LocalStorage('goods');
-//    console.log(goodColl);
-
     var App = {
         Models: {},
         Views: {},
@@ -18,7 +15,17 @@
     }
 
     // модель товара
-    App.Models.Product = Backbone.Model.extend({});
+    App.Models.Product = Backbone.Model.extend({
+        defaults: {
+        "self_id": 0,
+        "category": "",
+        "title": "",
+        "description": "",
+        "price": 0,
+        "moderate": true,
+        "image": "img/no-photoI.gif"
+        }
+    });
 
     // вид товара
     App.Views.Product = Backbone.View.extend({
@@ -28,8 +35,8 @@
         events: {
             'click .open-but' : function(){this.openProductModal('descriptionTemplate', '#descriptionModal');},
             'click .rewrite-but' : function(){this.openProductModal('rewriteTemplate', '#rewriteModal');},
-            // 'click .remove-but' : function(){this.openProductModal('rewriteTemplate', '#rewriteModal');}, ????
-            'click .add-but' : 'addNewProduct',
+            'click .remove-but' : 'removeProduct' 
+           
         },
         initialize: function() {
             this.listenTo(this.model, 'change', this.render);
@@ -41,20 +48,18 @@
             return this;
         },
         openProductModal: function(templId, modalId){
-            console.log(templId, modalId);
+            // console.log(templId, modalId);
             $(modalId).remove();   
             var modal = new App.Views.Modal({model: this.model});
             $('.modal-windows').append(modal.render(templId, modalId).el);
         },
-        addNewProduct: function(){
-            // добавить имг и айди
-            Products.productsView.openModal('#addItemModal');
-            var modal = new App.Views.Modal({model: new App.Models.Product()});
+        removeProduct: function(){
+            this.model.destroy();
+            Products.productsView.render();
         }
     });
 
     // Modal windows
-    // App.Models.Modal = Backbone.Model.extend({});
     App.Views.Modal = Backbone.View.extend({
         el: $('.modal-windows'),
         events: {
@@ -62,8 +67,6 @@
             'change select' : 'changeModel',
             'change textarea' : 'changeModel',
             'click .saveChanges': 'saveModel',
-            'click .addNewItem' : 'saveAddModel'
-            // события сбора данных по кнопкам окон
         },
         render: function(templId, modalId){
             this.modalId = modalId;
@@ -75,33 +78,19 @@
         },
         changeModel: function(ev){
             var target = ev.currentTarget;
-            console.log(target.name,target.value);
-            console.log(this.model);
             this.model.set(target.name,target.value,  {silent: true });
         },
         saveModel: function(){
             this.model.save({silent: false});
             Products.productsView.closeModal(this.modalId);
-        },
-        saveAddModel: function(){
-            Products.productsCollection.add(this.model);
-            //  ????
-            this.model.set();
-            this.model.save({silent: false});
-            console.log(Products.productsCollection.length);
-            // Products.productsView.closeModal(this.modalId);
         }
     });
-
-
 
     // коллекция моделей товаров
     App.Collections.Product = Backbone.Collection.extend({
         model: App.Models.Product,
-        localStorage: new Backbone.LocalStorage('goods')
+        localStorage: new Backbone.LocalStorage('goods'),
     });
-
-
 
     // коллекция видов товаров
     App.Views.Products = Backbone.View.extend({
@@ -112,14 +101,12 @@
             'change input[name="paginate"]' : 'changePagination',
             'click .sendUserButton': 'changeUser',
             'click .sendAnonimUser' : 'logAnonimUser',
-            'click .show-more' : 'showMore'
-        },
-
-        initialize: function() {
-            // this.listenTo(this.collection, 'add', this.render);
+            'click .show-more' : 'showMore',
+            'submit form[name="addItemForm"]': 'createNewProduct'
         },
 
         render: function(paginate) {
+            $('.items-goods').empty();
             var all = this.collection.length;
             var itemCount = parseInt(paginate) || parseInt($('input[name="paginate"]:checked').val());
             var gridCount = 12 / itemCount;
@@ -238,15 +225,30 @@
 
         showMore: function() {
             console.log('show more but');
+        },
+
+        rebuildGrid: function(){
+            $('.items-goods').empty();
+            this.render();
+        },
+
+        createNewProduct: function(event){
+            event.preventDefault();
+            var self_id = Products.user.userId;
+            var category = $('#itemCategory').val();
+            var title = $('#itemAddTitle').val();
+            var description = $('#itemAddDescr').val();
+            var price = $('#itemAddPrice').val();
+            var newModel = new App.Models.Product({self_id: self_id, category: category, title: title, description: description, price: price});
+            this.collection.add(newModel, {at: 0});
+            newModel.save();
+            this.render();
+            this.closeModal('#addItemModal');
         }
        
     });
 
-    
-
-
-
-    // GET data on firs load
+    // GET data on first load
     // not recommended to use fetch() on first time
     function initApplication() {
         // get user
@@ -256,6 +258,9 @@
                 localStorage.setItem("user", JSON.stringify(Products.user));
             }
         Products.productsCollection = new App.Collections.Product();
+        Products.productsCollection.comparator= function(model) {
+            return model.get("self_id");
+        };
         // get goods
         Products.productsCollection.fetch();
          if (Products.productsCollection.length <= 0){
@@ -270,10 +275,8 @@
                 }
             });
          } 
-
         buildGrid();
     }
-
 
     // rebuilding grid
     function buildGrid() {
@@ -281,10 +284,10 @@
         Products.productsView = new App.Views.Products({ collection: Products.productsCollection });
         $('.shopContainer').append(Products.productsView.render().el);
     }
+
     //first loading content
     initApplication();
 
-    
      // User class
     function User(id, name, password, role) {
         this.userId = id || 0;
@@ -292,8 +295,7 @@
         this.password = password || null;
         this.role = role || "anonim";
     }
-
-    
+ 
 })();
 
 

@@ -1,6 +1,5 @@
 [{
         "self_id": 101,
-        "itemId": 1000,
         "category": "tablets",
         "title": "Samsung Galaxy",
         "description": "With an 8\" TFT touch screen, this Samsung Galaxy Tab A SM-T350NZAAXAR tablet simplifies content navigation. Dual-band Wi-Fi makes it easy to access the Web, and a Bluetooth 4.1 interface enables you to pair with select devices.",
@@ -10,7 +9,6 @@
     },
     {
         "self_id": 101,
-        "itemId": 1001,
         "category": "tablets",
         "title": "Acer - ICONIA ONE",
         "description": "Browse the internet or play your favorite apps on this Acer tablet. It runs on an Android operating system and is powered by a quad-core 64-bit processor for full functionality. Google Mobile Services and Microsoft Office Suite are preloaded on this Acer tablet for out-of-the-box work or play capabilities, and DTS-HD Premium Sound lets you enjoy videos.",
@@ -20,7 +18,6 @@
     },
     {
         "self_id": 101,
-        "itemId": 1002,
         "category": "laptops",
         "title": "Lenovo - 15.6\" Laptop",
         "description": "Lenovo 110-15ACL Laptop: Enjoy productivity anywhere with this 15.6-inch Lenovo Ideapad laptop. Its 500GB of storage holds plenty of large applications and documents, and its built-in optical drive lets you read and write digital files. The quad-core AMD A6 processor and 4GB of RAM let this Lenovo Ideapad laptop run Windows 10 smoothly.",
@@ -30,7 +27,6 @@
     },
     {
         "self_id": 101,
-        "itemId": 1003,
         "category": "phones",
         "title": "Samsung - Galaxy S8",
         "description": "Inspired by the works of glassblowers and artisan metalsmiths, the Samsung Galaxy S8 represents a seamless fusion of glass and metal. Make a breathtaking design statement with its beautiful curves and radiant glass surfaces that reflect a wide spectrum of dazzling colours.",
@@ -40,7 +36,6 @@
     },
     {
         "self_id": 101,
-        "itemId": 1004,
         "category": "laptops",
         "title": "Lenovo - 15.6\" Laptop",
         "description": "Lenovo 110-15ACL Laptop: Enjoy productivity anywhere with this 15.6-inch Lenovo Ideapad laptop. Its 500GB of storage holds plenty of large applications and documents, and its built-in optical drive lets you read and write digital files. The quad-core AMD A6 processor and 4GB of RAM let this Lenovo Ideapad laptop run Windows 10 smoothly.",
@@ -50,7 +45,6 @@
     },
     {
         "self_id": 101,
-        "itemId": 1005,
         "category": "desktops",
         "title": "Asus - Zen AiO",
         "description": "Enjoy stunning visuals with this 23.8-inch Asus Zen all-in-one PC. Its Full HD touch display delivers crisp images and text, and its Intel Core i7 processor and 8GB of RAM keep applications running smoothly. This Asus Zen all-in-one PC has a large 1TB hard drive with plenty of space for all your files.",
@@ -60,7 +54,6 @@
     },
     {
         "self_id": 101,
-        "itemId": 1006,
         "category": "tablets",
         "title": "Samsung Galaxy",
         "description": "With an 8\" TFT touch screen, this Samsung Galaxy Tab A SM-T350NZAAXAR tablet simplifies content navigation. Dual-band Wi-Fi makes it easy to access the Web, and a Bluetooth 4.1 interface enables you to pair with select devices.",
@@ -70,7 +63,6 @@
     },
     {
         "self_id": 101,
-        "itemId": 1007,
         "category": "tablets",
         "title": "Acer - ICONIA ONE",
         "description": "Browse the internet or play your favorite apps on this Acer tablet. It runs on an Android operating system and is powered by a quad-core 64-bit processor for full functionality. Google Mobile Services and Microsoft Office Suite are preloaded on this Acer tablet for out-of-the-box work or play capabilities, and DTS-HD Premium Sound lets you enjoy videos.",
@@ -80,7 +72,6 @@
     },
     {
         "self_id": 102,
-        "itemId": 1008,
         "category": "laptops",
         "title": "Lenovo - 15.6\" Laptop",
         "description": "Lenovo 110-15ACL Laptop: Enjoy productivity anywhere with this 15.6-inch Lenovo Ideapad laptop. Its 500GB of storage holds plenty of large applications and documents, and its built-in optical drive lets you read and write digital files. The quad-core AMD A6 processor and 4GB of RAM let this Lenovo Ideapad laptop run Windows 10 smoothly.",
@@ -90,7 +81,6 @@
     },
     {
         "self_id": 102,
-        "itemId": 1009,
         "category": "phones",
         "title": "Samsung - Galaxy S8",
         "description": "Inspired by the works of glassblowers and artisan metalsmiths, the Samsung Galaxy S8 represents a seamless fusion of glass and metal. Make a breathtaking design statement with its beautiful curves and radiant glass surfaces that reflect a wide spectrum of dazzling colours.",
@@ -100,7 +90,6 @@
     },
     {
         "self_id": 102,
-        "itemId": 1010,
         "category": "laptops",
         "title": "Lenovo - 15.6\" Laptop",
         "description": "Lenovo 110-15ACL Laptop: Enjoy productivity anywhere with this 15.6-inch Lenovo Ideapad laptop. Its 500GB of storage holds plenty of large applications and documents, and its built-in optical drive lets you read and write digital files. The quad-core AMD A6 processor and 4GB of RAM let this Lenovo Ideapad laptop run Windows 10 smoothly.",
@@ -110,7 +99,6 @@
     },
     {
         "self_id": 102,
-        "itemId": 1011,
         "category": "desktops",
         "title": "Asus - Zen AiO",
         "description": "Enjoy stunning visuals with this 23.8-inch Asus Zen all-in-one PC. Its Full HD touch display delivers crisp images and text, and its Intel Core i7 processor and 8GB of RAM keep applications running smoothly. This Asus Zen all-in-one PC has a large 1TB hard drive with plenty of space for all your files.",
@@ -120,7 +108,6 @@
     },
     {
         "self_id": 103,
-        "itemId": 1012,
         "category": "tablets",
         "title": "Samsung Galaxy",
         "description": "With an 8\" TFT touch screen, this Samsung Galaxy Tab A SM-T350NZAAXAR tablet simplifies content navigation. Dual-band Wi-Fi makes it easy to access the Web, and a Bluetooth 4.1 interface enables you to pair with select devices.",
@@ -130,7 +117,6 @@
     },
     {
         "self_id": 103,
-        "itemId": 1013,
         "category": "tablets",
         "title": "Acer - ICONIA ONE",
         "description": "Browse the internet or play your favorite apps on this Acer tablet. It runs on an Android operating system and is powered by a quad-core 64-bit processor for full functionality. Google Mobile Services and Microsoft Office Suite are preloaded on this Acer tablet for out-of-the-box work or play capabilities, and DTS-HD Premium Sound lets you enjoy videos.",
@@ -140,7 +126,6 @@
     },
     {
         "self_id": 103,
-        "itemId": 1014,
         "category": "laptops",
         "title": "Lenovo - 15.6\" Laptop",
         "description": "Lenovo 110-15ACL Laptop: Enjoy productivity anywhere with this 15.6-inch Lenovo Ideapad laptop. Its 500GB of storage holds plenty of large applications and documents, and its built-in optical drive lets you read and write digital files. The quad-core AMD A6 processor and 4GB of RAM let this Lenovo Ideapad laptop run Windows 10 smoothly.",
@@ -150,7 +135,6 @@
     },
     {
         "self_id": 103,
-        "itemId": 1015,
         "category": "phones",
         "title": "Samsung - Galaxy S8",
         "description": "Inspired by the works of glassblowers and artisan metalsmiths, the Samsung Galaxy S8 represents a seamless fusion of glass and metal. Make a breathtaking design statement with its beautiful curves and radiant glass surfaces that reflect a wide spectrum of dazzling colours.",
@@ -160,7 +144,6 @@
     },
     {
         "self_id": 103,
-        "itemId": 1016,
         "category": "laptops",
         "title": "Lenovo - 15.6\" Laptop",
         "description": "Lenovo 110-15ACL Laptop: Enjoy productivity anywhere with this 15.6-inch Lenovo Ideapad laptop. Its 500GB of storage holds plenty of large applications and documents, and its built-in optical drive lets you read and write digital files. The quad-core AMD A6 processor and 4GB of RAM let this Lenovo Ideapad laptop run Windows 10 smoothly.",
@@ -170,7 +153,6 @@
     },
     {
         "self_id": 103,
-        "itemId": 1017,
         "category": "desktops",
         "title": "Asus - Zen AiO",
         "description": "Enjoy stunning visuals with this 23.8-inch Asus Zen all-in-one PC. Its Full HD touch display delivers crisp images and text, and its Intel Core i7 processor and 8GB of RAM keep applications running smoothly. This Asus Zen all-in-one PC has a large 1TB hard drive with plenty of space for all your files.",
@@ -180,7 +162,6 @@
     },
     {
         "self_id": 104,
-        "itemId": 1018,
         "category": "tablets",
         "title": "Samsung Galaxy",
         "description": "With an 8\" TFT touch screen, this Samsung Galaxy Tab A SM-T350NZAAXAR tablet simplifies content navigation. Dual-band Wi-Fi makes it easy to access the Web, and a Bluetooth 4.1 interface enables you to pair with select devices.",
@@ -190,7 +171,6 @@
     },
     {
         "self_id": 104,
-        "itemId": 1019,
         "category": "tablets",
         "title": "Acer - ICONIA ONE",
         "description": "Browse the internet or play your favorite apps on this Acer tablet. It runs on an Android operating system and is powered by a quad-core 64-bit processor for full functionality. Google Mobile Services and Microsoft Office Suite are preloaded on this Acer tablet for out-of-the-box work or play capabilities, and DTS-HD Premium Sound lets you enjoy videos.",
@@ -200,7 +180,6 @@
     },
     {
         "self_id": 104,
-        "itemId": 1020,
         "category": "laptops",
         "title": "Lenovo - 15.6\" Laptop",
         "description": "Lenovo 110-15ACL Laptop: Enjoy productivity anywhere with this 15.6-inch Lenovo Ideapad laptop. Its 500GB of storage holds plenty of large applications and documents, and its built-in optical drive lets you read and write digital files. The quad-core AMD A6 processor and 4GB of RAM let this Lenovo Ideapad laptop run Windows 10 smoothly.",
@@ -210,7 +189,6 @@
     },
     {
         "self_id": 104,
-        "itemId": 1021,
         "category": "phones",
         "title": "Samsung - Galaxy S8",
         "description": "Inspired by the works of glassblowers and artisan metalsmiths, the Samsung Galaxy S8 represents a seamless fusion of glass and metal. Make a breathtaking design statement with its beautiful curves and radiant glass surfaces that reflect a wide spectrum of dazzling colours.",
@@ -220,7 +198,6 @@
     },
     {
         "self_id": 104,
-        "itemId": 1022,
         "category": "laptops",
         "title": "Lenovo - 15.6\" Laptop",
         "description": "Lenovo 110-15ACL Laptop: Enjoy productivity anywhere with this 15.6-inch Lenovo Ideapad laptop. Its 500GB of storage holds plenty of large applications and documents, and its built-in optical drive lets you read and write digital files. The quad-core AMD A6 processor and 4GB of RAM let this Lenovo Ideapad laptop run Windows 10 smoothly.",
@@ -230,7 +207,6 @@
     },
     {
         "self_id": 104,
-        "itemId": 1023,
         "category": "desktops",
         "title": "Asus - Zen AiO",
         "description": "Enjoy stunning visuals with this 23.8-inch Asus Zen all-in-one PC. Its Full HD touch display delivers crisp images and text, and its Intel Core i7 processor and 8GB of RAM keep applications running smoothly. This Asus Zen all-in-one PC has a large 1TB hard drive with plenty of space for all your files.",
@@ -240,7 +216,6 @@
     },
     {
         "self_id": 105,
-        "itemId": 1024,
         "category": "tablets",
         "title": "Samsung Galaxy",
         "description": "With an 8\" TFT touch screen, this Samsung Galaxy Tab A SM-T350NZAAXAR tablet simplifies content navigation. Dual-band Wi-Fi makes it easy to access the Web, and a Bluetooth 4.1 interface enables you to pair with select devices.",
@@ -250,7 +225,6 @@
     },
     {
         "self_id": 105,
-        "itemId": 1025,
         "category": "tablets",
         "title": "Acer - ICONIA ONE",
         "description": "Browse the internet or play your favorite apps on this Acer tablet. It runs on an Android operating system and is powered by a quad-core 64-bit processor for full functionality. Google Mobile Services and Microsoft Office Suite are preloaded on this Acer tablet for out-of-the-box work or play capabilities, and DTS-HD Premium Sound lets you enjoy videos.",
@@ -260,7 +234,6 @@
     },
     {
         "self_id": 105,
-        "itemId": 1026,
         "category": "laptops",
         "title": "Lenovo - 15.6\" Laptop",
         "description": "Lenovo 110-15ACL Laptop: Enjoy productivity anywhere with this 15.6-inch Lenovo Ideapad laptop. Its 500GB of storage holds plenty of large applications and documents, and its built-in optical drive lets you read and write digital files. The quad-core AMD A6 processor and 4GB of RAM let this Lenovo Ideapad laptop run Windows 10 smoothly.",
@@ -270,7 +243,6 @@
     },
     {
         "self_id": 105,
-        "itemId": 1027,
         "category": "phones",
         "title": "Samsung - Galaxy S8",
         "description": "Inspired by the works of glassblowers and artisan metalsmiths, the Samsung Galaxy S8 represents a seamless fusion of glass and metal. Make a breathtaking design statement with its beautiful curves and radiant glass surfaces that reflect a wide spectrum of dazzling colours.",
@@ -280,7 +252,6 @@
     },
     {
         "self_id": 105,
-        "itemId": 1028,
         "category": "laptops",
         "title": "Lenovo - 15.6\" Laptop",
         "description": "Lenovo 110-15ACL Laptop: Enjoy productivity anywhere with this 15.6-inch Lenovo Ideapad laptop. Its 500GB of storage holds plenty of large applications and documents, and its built-in optical drive lets you read and write digital files. The quad-core AMD A6 processor and 4GB of RAM let this Lenovo Ideapad laptop run Windows 10 smoothly.",
@@ -290,7 +261,6 @@
     },
     {
         "self_id": 105,
-        "itemId": 1029,
         "category": "desktops",
         "title": "Asus - Zen AiO",
         "description": "Enjoy stunning visuals with this 23.8-inch Asus Zen all-in-one PC. Its Full HD touch display delivers crisp images and text, and its Intel Core i7 processor and 8GB of RAM keep applications running smoothly. This Asus Zen all-in-one PC has a large 1TB hard drive with plenty of space for all your files.",
@@ -299,3 +269,5 @@
         "image": "img/desk_asus.jpg"
     }
 ]
+
+        
