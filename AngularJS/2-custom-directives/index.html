@@ -1,18 +1,20 @@
 <!doctype html>
 <html ng-app='myApp'>
-  <head>
+
+<head>
     <title>My AngularJS App</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-  	<script src="script.js"></script>
-  </head>
-  <body>
+    <script src="script.js"></script>
+</head>
+
+<body>
     <div class="main-container" ng-controller="mainCtrl">
-      <button ng-click="open=true">open modal</button>
-      <button ng-click="open=false">close modal</button>
-      <modal title-country = "Poland" ng-show="open"> 
-        {{text}}
-      </modal>
+        <button ng-click="open=true">open modal</button>
+        <modal title-country="Poland" on-close="closeModal()" ng-show="open">
+            {{text}}
+        </modal>
     </div>
-  </body>
+</body>
+
 </html>
