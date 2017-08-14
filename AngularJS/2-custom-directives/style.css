@@ -27,6 +27,7 @@ html, body {
     background-color: lightgrey;
     border: 1px solid grey;
     border-radius: 6px;
+    box-shadow: 10px 15px 30px rgba(0, 0, 0, .6);
 }
 
 .modal-view .modal-title {
