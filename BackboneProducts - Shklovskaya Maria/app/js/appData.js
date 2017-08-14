@@ -237,6 +237,7 @@ App.Views.Products = Backbone.View.extend({
         this.render();
     },
     createNewProduct: function(event) {
+        event.stopImmediatePropagation();
         event.preventDefault();
         var self_id = Products.user.userId;
         var category = $('#itemCategory').val();
