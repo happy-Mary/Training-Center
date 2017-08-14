@@ -9,6 +9,7 @@
   <body>
     <div class="main-container" ng-controller="mainCtrl">
       <button ng-click="open=true">open modal</button>
+      <button ng-click="open=false">close modal</button>
       <modal title-country = "Poland" ng-show="open"> 
         {{text}}
       </modal>

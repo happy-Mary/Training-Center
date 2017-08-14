@@ -13,7 +13,7 @@ html, body {
 .main-container button {
     height: 30px;
     width: 100px;
-    margin: 20px 40px;
+    margin: 20px;
     cursor: pointer;
 }
 
