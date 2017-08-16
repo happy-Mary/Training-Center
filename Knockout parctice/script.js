@@ -1,4 +1,5 @@
 function VM(){
+    var self = this;
     self.list = [
         {name: "John", age: 30},
         {name: "Alice", age: 35},
@@ -23,6 +24,11 @@ function VM(){
     return res;
     }, this);
    
+    self.getValues = function(product){
+        console.log(product.name());
+        product.name("new");
+        console.log(product.name());
+    };
 }
 
 ko.applyBindings(new VM());
