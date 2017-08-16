@@ -84,7 +84,7 @@ function VM(){
     self.changeGrid = function(data, event) {
         var cls = $(event.target).attr('id');
         $('.items-goods').removeClass('show4 show2 show6').addClass(cls);
-    }
+    };
 
 
 
