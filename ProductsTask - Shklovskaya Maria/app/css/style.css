@@ -47,7 +47,8 @@ nav {
 .menu li a,
 .menu li a:hover,
 .menu li a:active,
-.menu li a:focus {
+.menu li a:focus,
+.menu li a:visited {
     display: block;
     color: #fff;
     font-weight: bold;
