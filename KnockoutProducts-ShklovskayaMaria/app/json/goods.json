@@ -3,7 +3,7 @@
         "category": "tablets",
         "title": "Samsung Galaxy",
         "description": "With an 8\" TFT touch screen, this Samsung Galaxy Tab A SM-T350NZAAXAR tablet simplifies content navigation. Dual-band Wi-Fi makes it easy to access the Web, and a Bluetooth 4.1 interface enables you to pair with select devices.",
-        "price": 100,
+        "price": 200,
         "moderate": true,
         "image": "img/tabl_sumsung.jpeg"
     },
@@ -30,7 +30,7 @@
         "category": "phones",
         "title": "Samsung - Galaxy S8",
         "description": "Inspired by the works of glassblowers and artisan metalsmiths, the Samsung Galaxy S8 represents a seamless fusion of glass and metal. Make a breathtaking design statement with its beautiful curves and radiant glass surfaces that reflect a wide spectrum of dazzling colours.",
-        "price": 100,
+        "price": 400,
         "moderate": true,
         "image": "img/phone-sams.png"
     },
@@ -57,7 +57,7 @@
         "category": "tablets",
         "title": "Samsung Galaxy",
         "description": "With an 8\" TFT touch screen, this Samsung Galaxy Tab A SM-T350NZAAXAR tablet simplifies content navigation. Dual-band Wi-Fi makes it easy to access the Web, and a Bluetooth 4.1 interface enables you to pair with select devices.",
-        "price": 100,
+        "price": 300,
         "moderate": true,
         "image": "img/tabl_sumsung.jpeg"
     },

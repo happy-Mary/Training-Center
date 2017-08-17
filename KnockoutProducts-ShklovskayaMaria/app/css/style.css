@@ -25,6 +25,17 @@ button, button:hover, button:active, button:focus {outline: none; border: none; 
     margin-bottom: 1rem;
 }
 
+button:disabled,
+button:disabled:hover,
+button[disabled],
+button[disabled]:hover {
+    background-color: #204d74!important;
+    opacity: .5;
+    cursor: default;
+}
+
+input:focus, textarea:focus, select:focus {outline: none; border-style: solid; border-color: green;}
+
 header {
     padding-top: .5rem;
     display: flex;
@@ -171,7 +182,7 @@ nav {
     position: absolute;
     top: 0;
     right: 0;
-    display: none;  
+     display: none;   
     width: 40px;
     border-top-right-radius: 10px;
 } 
@@ -220,6 +231,60 @@ nav {
 }
 .items-goods .item:hover .item-buttons {
       display: block;
+}
+
+/*Modal styles  */
+.modalWindows>button, .remodal-confirm, .remodal-cancel {
+    padding: 12px 10px;
+    text-transform: uppercase;
+}
+
+.error-login {
+    text-align: center;
+    font-weight: bold;
+    height: 1.5rem; 
+}
+
+.readModal .price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.loginModal .error-login {
+    text-align: center;
+    font-weight: bold;
+    height: 1.5rem;
+    line-height: 1.5rem; 
+    color: red;
+}
+
+.loginModal form {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.loginModal input,
+.loginModal label {
+    width: 100%;
+    display: block;
+    padding: 10px 5px;
+}
+
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus
+input:-webkit-autofill, 
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 1px solid green;
+  -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 

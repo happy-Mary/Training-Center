@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Knockout Template</title>
     <!--styles  -->
+    <link href="bower_components/remodal/dist/remodal.css" rel="stylesheet">
+    <link href="bower_components/remodal/dist/remodal-default-theme.css" rel="stylesheet">
     <link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="bower_components/normalize-css/normalize.css" rel="stylesheet">
     <link  href="css/style.css" rel="stylesheet">
@@ -24,22 +26,39 @@
   <div class="shopContainer">
     <!-- MODALS -->
     <section class="modalWindows">
-      
          <!-- 1. Login modal  -->
-        
+        <div class="remodal loginModal" data-remodal-id="loginModal">
+          <button data-remodal-action="close" class="remodal-close"></button>
+          <form action="" name="loginForm" data-bind="event: {submit: newUser}">
+                <label for="loginName">Enter your name:</label>
+                <input type="text" placeholder="Name" id="loginName" autofocus required>
+                <label for="loginPass">Enter your password:</label>
+                <input type="password" placeholder="Password" id="loginPass" required>
+                <p class="error-login"></p>
+                <div class="modal-footer">
+                  <button type="submit" class="remodal-confirm sendUserButton">Log in</button>
+                  <button data-remodal-action="cancel" class="remodal-cancel sendAnonimUser">Log in as Anonim</button>
+                </div>
+            </form>
+        </div>
         <!-- 2. Description modal  -->
-        
+        <div class="remodal readModal" data-remodal-id="readModal">
+          <button data-remodal-action="close" class="remodal-close"></button>
+          <h2 data-bind="text: readData.title"></h2>
+          <img data-bind="attr: {src: readData.image}" width = "50%">
+          <p class='price' data-bind="text: readData.price"></p>
+          <p data-bind="text: readData.description"></p>
+        </div>
         <!-- 3. Rewrite modal  -->
         
         <!-- 4. Add new Item modal  -->
          
         <!-- MODAL ENDS  -->
     </section>
-        
-   
+
     <!-- log in  -->
     <header>
-      <button class="loginButton">Log in</button>
+      <button class="loginButton" data-remodal-target="loginModal">Log in</button>
     </header>
     <!-- menu  -->
     <nav>
@@ -70,8 +89,9 @@
                 <h4 data-bind="text: title"></h4>
             </div>
               <div class="item-buttons">
-                 <button class="open-but" data-bind="click: $root.getValues"><i class="fa fa-eye" aria-hidden="true"></i></span></button> 
-                <button class="rewrite-but"><i class="fa fa-pencil" aria-hidden="true"></i></span></button>
+                 <!-- data-bind="enable: $root.canWrite($data)" -->
+                <button class="open-but" data-bind="click: $root.readProduct"><i class="fa fa-eye" aria-hidden="true"></i></span></button> 
+                <button class="rewrite-but"  data-bind="enable: self_id === $root.user().userId"><i class="fa fa-pencil" aria-hidden="true"></i></span></button>
                 <button class="remove-but"><i class="fa fa-trash" aria-hidden="true"></i></button>
                 <button class="add-but"><i class="fa fa-plus" aria-hidden="true"></i></span></button>
             </div> 
@@ -87,6 +107,7 @@
 
     <script src="bower_components/knockout/dist/knockout.js"></script>
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/remodal/dist/remodal.min.js"></script>
 
     <script src="js/localStore.js"></script>
     <script src="js/viewModel.js"></script>

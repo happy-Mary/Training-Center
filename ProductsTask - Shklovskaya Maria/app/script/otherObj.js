@@ -22,7 +22,7 @@ function User(id, name, password, role) {
 }
 
 // constructor Item
-function Item(id, itemId, category, title, description, price, ) {
+function Item(id, itemId, category, title, description, price) {
     this.id = id;
     this.itemId = parseInt(itemId);
     this.category = category;

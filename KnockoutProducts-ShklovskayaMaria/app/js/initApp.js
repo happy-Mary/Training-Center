@@ -1,6 +1,4 @@
 
-var goods = undefined;
-
 var localStorageObj = (function(){
     return {
         save: function(name, obj) {
@@ -12,33 +10,61 @@ var localStorageObj = (function(){
         };
 })();
 
+
+// App 
     var initApp = function() {
+        var appData = {
+            products: "",
+            user: ""
+        };
+
+        // check user in LS
+        var user = localStorageObj.get("user");
+        if (user !== null) {
+            appData.user = user;
+            $(".loginButton").html("Hello, "+user.name);
+        }
+        
         // checking goods in LS, if server - ajax request all the time
         var goods = localStorageObj.get("goods");
         if (goods === null){
-             $.ajax({
+             getAjaxGoods();
+        } else {
+            appData.products = goods;
+            runApp();
+        }
+
+        function getAjaxGoods() {
+            $.ajax({
                     url: "json/goods.json",
                     success: function(result) {
-                        console.log('result');
-                        console.log(result);
                         localStorageObj.save("goods", result);
-                        returnGoods(result);
+                        appData.products = result;
+                        runApp();
                     }
                 });
-        } else {
-            returnGoods(goods);
+        }
+
+        function runApp(){
+             ko.applyBindings(new VM(appData));
         }
     };
-    function returnGoods(obj) {
-        goods = obj;
-        return goods;
-    }
 
     initApp();
+    
 
-function VM(){
+function VM(appObj){
+    console.log(appObj);
     var self = this;
-    self.list = ko.observableArray(goods);
+    self.list = ko.observableArray(appObj.products);
+    self.user = ko.observable(appObj.user);
+
+    self.readData = {
+        title: ko.observable(),
+        description: ko.observable(),
+        image: ko.observable(),
+        price: ko.observable()
+    };
 
     self.TableData = ko.computed(function() {
         var data = ko.unwrap(self.list);
@@ -55,13 +81,17 @@ function VM(){
                 moderate: ko.observable(obj.moderate),
                 image: ko.observable(obj.image)
             });
-    }
-    return res;
+        }
+        return res;
     }, self);
    
-    self.getValues = function(product){
-        console.log(product.title());
-        product.title("new");
+    self.readProduct = function(product){
+        self.readData.title(product.title());
+        self.readData.description(product.description());
+        self.readData.image(product.image());
+        self.readData.price(product.price());
+        var readModal = $('[data-remodal-id=readModal]').remodal();
+        readModal.open();
     };
 
     self.changeCategory = function(data, event){
@@ -69,12 +99,12 @@ function VM(){
         $('.menu').find(".active").removeClass("active");
         $(event.target).addClass('active');
         if(category==="all"){
-            self.list(goods);
+            self.list(appObj.products);
         } else {
             var arr = [];
-            for (var i = 0; i <= goods.length - 1; i++) {
-                if (goods[i].category === category) {
-                    arr.push(goods[i]);
+            for (var i = 0; i <= appObj.products.length - 1; i++) {
+                if (appObj.products[i].category === category) {
+                    arr.push(appObj.products[i]);
                 }
             }
             self.list(arr);
@@ -86,11 +116,47 @@ function VM(){
         $('.items-goods').removeClass('show4 show2 show6').addClass(cls);
     };
 
+    self.newUser = function(data, event){
+        event.preventDefault();
+        var name = $("#loginName").val();
+        var password = $("#loginPass").val();
 
+        $.ajax({
+            url: "json/users.json",
+            success: function(allUsers) {
+                    var respond = '';
+                    $.each(allUsers, function(i) {
+                        if (allUsers[i].name === name && allUsers[i].password === password) {
+                            respond = allUsers[i];
+                            return false;
+                        } else {
+                            respond = "We didn't find you! <br/> Please try again.";
+                        }
+                    });
+                    ((typeof respond) === 'object') ? self.loginUser(respond): $('.text-danger').html(respond);
+                    // callback end
+                }
+                // ajax end
+        });
+        // end func
+    };
+
+    self.loginUser = function(obj){
+        self.user(obj);
+        localStorageObj.save("user", obj);
+         $(".loginButton").html("Hello, " + self.user.name);
+        var loginModal = $('[data-remodal-id=loginModal]').remodal();
+        loginModal.close();
+    };
+
+    self.writable = ko.observable();
+    self.canWrite = function(product){
+        (product.self_id !== self.user().userId) ? self.writable(false) : self.writable(true);
+    };
 
 }
 
-ko.applyBindings(new VM());
+// create modals object with initialisation
 
 
 
