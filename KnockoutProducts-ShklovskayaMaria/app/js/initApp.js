@@ -87,8 +87,14 @@ function VM(appObj){
         for (var i in data){
         var obj = data[i];
             var newP = new newProduct(obj);
+            for(var k in newP){
+                newP[k].subscribe(function(){
+                    localStorage.setItem('goods', ko.toJSON(self.resultProd()));
+                });
+            }
             self.resultProd.push(newP);
         }
+
         return self.resultProd;
     }, self);
 
@@ -199,7 +205,12 @@ function VM(appObj){
         var addModal = $('[data-remodal-id=addModal]').remodal();
         addModal.close();
         self.currentProd(new newProduct());
-    }
+    };
+
+    self.resultProd.subscribe(function() {
+        localStorage.setItem('goods', ko.toJSON(self.resultProd()));
+        console.log(self.resultProd().length);
+    }, self);
 
    
 
