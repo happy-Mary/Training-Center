@@ -54,7 +54,6 @@ var localStorageObj = (function(){
     
 
 function VM(appObj){
-    console.log(appObj);
     var self = this;
     self.list = ko.observableArray(appObj.products);
     self.user = ko.observable(appObj.user);
@@ -120,6 +119,8 @@ function VM(appObj){
         event.preventDefault();
         var name = $("#loginName").val();
         var password = $("#loginPass").val();
+        console.log(name);
+        console.log(password);
 
         $.ajax({
             url: "json/users.json",
@@ -133,7 +134,7 @@ function VM(appObj){
                             respond = "We didn't find you! <br/> Please try again.";
                         }
                     });
-                    ((typeof respond) === 'object') ? self.loginUser(respond): $('.text-danger').html(respond);
+                    ((typeof respond) === 'object') ? self.loginUser(respond) : $('.error-login').html(respond);
                     // callback end
                 }
                 // ajax end
@@ -144,7 +145,7 @@ function VM(appObj){
     self.loginUser = function(obj){
         self.user(obj);
         localStorageObj.save("user", obj);
-         $(".loginButton").html("Hello, " + self.user.name);
+         $(".loginButton").html("Hello, " + self.user().name);
         var loginModal = $('[data-remodal-id=loginModal]').remodal();
         loginModal.close();
     };

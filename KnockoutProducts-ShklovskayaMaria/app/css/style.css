@@ -254,8 +254,8 @@ nav {
 .loginModal .error-login {
     text-align: center;
     font-weight: bold;
-    height: 1.5rem;
-    line-height: 1.5rem; 
+      height: 2rem;  
+    padding: .5rem;
     color: red;
 }
 

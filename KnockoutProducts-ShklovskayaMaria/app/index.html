@@ -91,9 +91,9 @@
               <div class="item-buttons">
                  <!-- data-bind="enable: $root.canWrite($data)" -->
                 <button class="open-but" data-bind="click: $root.readProduct"><i class="fa fa-eye" aria-hidden="true"></i></span></button> 
-                <button class="rewrite-but"  data-bind="enable: self_id === $root.user().userId"><i class="fa fa-pencil" aria-hidden="true"></i></span></button>
-                <button class="remove-but"><i class="fa fa-trash" aria-hidden="true"></i></button>
-                <button class="add-but"><i class="fa fa-plus" aria-hidden="true"></i></span></button>
+                <button class="rewrite-but" data-bind="enable: self_id === $root.user().userId || $root.user().role==='admin'"><i class="fa fa-pencil" aria-hidden="true"></i></span></button>
+                <button class="remove-but" data-bind="enable: self_id === $root.user().userId || $root.user().role==='admin'"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                <button class="add-but" data-bind="enable: $root.user()"><i class="fa fa-plus" aria-hidden="true"></i></span></button>
             </div> 
              <span class='item-label'>my</span>  
         </div>
