@@ -50,7 +50,22 @@
           <p data-bind="text: readData.description"></p>
         </div>
         <!-- 3. Rewrite modal  -->
-        
+        <div class="remodal rewriteModal" data-remodal-id="rewriteModal">
+          <button data-remodal-action="close" class="remodal-close"></button>
+          <form action="" name="itemForm"> 
+                <label for="itemRewriteId">Product id:</label>
+                <input type="number" id="itemRewriteId" disabled data-bind="value: rewriteData().self_id">
+                <label for="itemRewriteTitle">Title:</label>
+                <input type="text" id="itemRewriteTitle" required data-bind="value: rewriteData().title">
+                <label for="itemRewritePrice">Price:</label>
+                <input type="number" id="itemRewritePrice" required data-bind="value: rewriteData().price">
+                <label for="itemRewriteDescr">Description:</label> 
+                <textarea rows="6"  id="itemRewriteDescr" data-bind="value: rewriteData().description"></textarea>
+                <div class="modal-footer">
+                  <button type="submit" class="remodal-confirm saveChanges" data-bind="click: $root.saveRewriteProduct">Save changes</button>
+                </div>
+            </form> 
+        </div>
         <!-- 4. Add new Item modal  -->
          
         <!-- MODAL ENDS  -->
@@ -89,11 +104,10 @@
                 <h4 data-bind="text: title"></h4>
             </div>
               <div class="item-buttons">
-                 <!-- data-bind="enable: $root.canWrite($data)" -->
                 <button class="open-but" data-bind="click: $root.readProduct"><i class="fa fa-eye" aria-hidden="true"></i></span></button> 
-                <button class="rewrite-but" data-bind="enable: self_id === $root.user().userId || $root.user().role==='admin'"><i class="fa fa-pencil" aria-hidden="true"></i></span></button>
-                <button class="remove-but" data-bind="enable: self_id === $root.user().userId || $root.user().role==='admin'"><i class="fa fa-trash" aria-hidden="true"></i></button>
-                <button class="add-but" data-bind="enable: $root.user()"><i class="fa fa-plus" aria-hidden="true"></i></span></button>
+                <button class="rewrite-but" data-bind="enable: self_id() === $root.user().userId || $root.user().role==='admin', click: $root.rewriteProduct"><i class="fa fa-pencil" aria-hidden="true"></i></span></button>
+                <button class="remove-but" data-bind="enable: self_id() === $root.user().userId || $root.user().role==='admin', click: $root.removeProduct"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                <button class="add-but" data-bind="enable: $root.user"><i class="fa fa-plus" aria-hidden="true"></i></span></button>
             </div> 
              <span class='item-label'>my</span>  
         </div>

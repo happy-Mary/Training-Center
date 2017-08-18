@@ -57,6 +57,9 @@ function VM(appObj){
     var self = this;
     self.list = ko.observableArray(appObj.products);
     self.user = ko.observable(appObj.user);
+    self.currentProd = ko.observable({});
+    self.res = ko.observableArray();
+
 
     self.readData = {
         title: ko.observable(),
@@ -65,33 +68,24 @@ function VM(appObj){
         price: ko.observable()
     };
 
+    self.rewriteData = ko.observable({});
+
     self.TableData = ko.computed(function() {
         var data = ko.unwrap(self.list);
-        var res = ko.observableArray();
-
         for (var i in data){
         var obj = data[i];
-            res.push({
-                self_id: obj.self_id,
+            self.res.push({
+                self_id: ko.observable(obj.self_id),
                 category: ko.observable(obj.category),
                 title: ko.observable(obj.title),
                 description: ko.observable(obj.description),
                 price: ko.observable(obj.price),
                 moderate: ko.observable(obj.moderate),
                 image: ko.observable(obj.image)
-            });
+            });   
         }
-        return res;
+        return self.res;
     }, self);
-   
-    self.readProduct = function(product){
-        self.readData.title(product.title());
-        self.readData.description(product.description());
-        self.readData.image(product.image());
-        self.readData.price(product.price());
-        var readModal = $('[data-remodal-id=readModal]').remodal();
-        readModal.open();
-    };
 
     self.changeCategory = function(data, event){
         var category = $(event.target).html();
@@ -150,10 +144,49 @@ function VM(appObj){
         loginModal.close();
     };
 
-    self.writable = ko.observable();
-    self.canWrite = function(product){
-        (product.self_id !== self.user().userId) ? self.writable(false) : self.writable(true);
+    self.readProduct = function(product){
+        self.readData.title(product.title());
+        self.readData.description(product.description());
+        self.readData.image(product.image());
+        self.readData.price(product.price());
+        var readModal = $('[data-remodal-id=readModal]').remodal();
+        readModal.open();
     };
+
+    self.rewriteProduct = function(product){
+        var obj = {};
+        for(key in product) {
+            obj[key] = product[key]();
+        }
+        self.rewriteData(obj);
+        self.currentProd=product;
+
+        var rewriteModal = $('[data-remodal-id=rewriteModal]').remodal();
+        rewriteModal.open();
+    };
+
+    self.saveRewriteProduct = function(data, event, product){
+        event.preventDefault();
+
+        for(key in self.rewriteData()){
+            var result = self.rewriteData()[key];
+            self.currentProd[key](result);
+            var rewriteModal = $('[data-remodal-id=rewriteModal]').remodal();
+            rewriteModal.close();
+        }
+       
+    };
+
+    self.removeProduct = function(data, product){
+        console.log(self.res());
+        self.res.remove(data);
+    };
+
+    self.addProduct = function(){
+
+    }
+
+   
 
 }
 

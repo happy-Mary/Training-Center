@@ -259,17 +259,23 @@ nav {
     color: red;
 }
 
-.loginModal form {
+.loginModal form,
+.rewriteModal form {
     width: 70%;
     margin: 0 auto;
 }
 
 .loginModal input,
-.loginModal label {
+.loginModal label,
+.rewriteModal input,
+.rewriteModal label,
+.rewriteModal textarea {
     width: 100%;
     display: block;
     padding: 10px 5px;
 }
+
+.rewriteModal button {margin-top: 1rem;}
 
 /* Change Autocomplete styles in Chrome*/
 input:-webkit-autofill,
