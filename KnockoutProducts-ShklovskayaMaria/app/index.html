@@ -67,7 +67,30 @@
             </form> 
         </div>
         <!-- 4. Add new Item modal  -->
-         
+         <div class="remodal addModal" data-remodal-id="addModal">
+          <button data-remodal-action="close" class="remodal-close"></button>
+          <form action="" name="addItemForm"> 
+              <!-- category -->
+              <label for="itemCategory">Choose category:</label>
+              <select id="itemCategory" required  data-bind="value: currentProd().category">
+                <option value="">Choose</option>
+                <option value="tablets">Tablets</option>
+                <option value="laptops">Laptops</option>
+                <option value="phones">Phones</option>
+                <option value="desktops">Desktops</option>
+              </select>
+              <!-- title  -->
+                <label for="itemAddTitle">Title:</label>
+                <input type="text" id="itemAddTitle" required data-bind="value: currentProd().title">
+              <!-- price  -->
+                <label for="itemAddPrice">Price:</label>
+                <input type="number" id="itemAddPrice" required data-bind="value: currentProd().price">
+              <!--description  -->
+              <label for="itemAddDescr">Description:</label> 
+              <textarea rows="6" id="itemAddDescr" data-bind="value: currentProd().description"></textarea>
+              <button type="submit" class="remodal-confirm addNewItem" data-bind="click: $root.saveProduct">Save changes</button>
+            </form> 
+        </div>
         <!-- MODAL ENDS  -->
     </section>
 
@@ -96,7 +119,7 @@
               <label  for ='show6'>6</label>
       </section>
         <!--  main content -->
-      <section class="items-goods show4"  data-bind="foreach: TableData()">
+      <section class="items-goods show4"  data-bind="foreach: BuildData()">
         <div class="item">
             <div class='item-content'>
                 <p class='price'  data-bind="text: price"></p>
@@ -107,7 +130,7 @@
                 <button class="open-but" data-bind="click: $root.readProduct"><i class="fa fa-eye" aria-hidden="true"></i></span></button> 
                 <button class="rewrite-but" data-bind="enable: self_id() === $root.user().userId || $root.user().role==='admin', click: $root.rewriteProduct"><i class="fa fa-pencil" aria-hidden="true"></i></span></button>
                 <button class="remove-but" data-bind="enable: self_id() === $root.user().userId || $root.user().role==='admin', click: $root.removeProduct"><i class="fa fa-trash" aria-hidden="true"></i></button>
-                <button class="add-but" data-bind="enable: $root.user"><i class="fa fa-plus" aria-hidden="true"></i></span></button>
+                <button class="add-but" data-bind="enable: $root.user, click: $root.addProduct"><i class="fa fa-plus" aria-hidden="true"></i></span></button>
             </div> 
              <span class='item-label'>my</span>  
         </div>

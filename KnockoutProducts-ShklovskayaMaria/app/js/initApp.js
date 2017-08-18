@@ -54,12 +54,23 @@ var localStorageObj = (function(){
     
 
 function VM(appObj){
+    // Product class
+    function newProduct(obj){
+        var obj = obj || {};
+        this.self_id = (obj.self_id) ? ko.observable(obj.self_id) : ko.observable(0);
+        this.category = (obj.category) ? ko.observable(obj.category): ko.observable("");
+        this.title = (obj.title) ? ko.observable(obj.title): ko.observable("");
+        this.description = (obj.description) ? ko.observable(obj.description): ko.observable("");
+        this.price = (obj.price) ? ko.observable(obj.price) : ko.observable(0);
+        this.moderate = (obj.image) ? ko.observable(obj.moderate) : ko.observable(true);
+        this.image = (obj.image) ? ko.observable(obj.image) : ko.observable("img/no-photoI.gif");
+    }
+
     var self = this;
     self.list = ko.observableArray(appObj.products);
     self.user = ko.observable(appObj.user);
     self.currentProd = ko.observable({});
-    self.res = ko.observableArray();
-
+    self.resultProd;
 
     self.readData = {
         title: ko.observable(),
@@ -70,21 +81,15 @@ function VM(appObj){
 
     self.rewriteData = ko.observable({});
 
-    self.TableData = ko.computed(function() {
+    self.BuildData = ko.computed(function() {
         var data = ko.unwrap(self.list);
+        self.resultProd = ko.observableArray();
         for (var i in data){
         var obj = data[i];
-            self.res.push({
-                self_id: ko.observable(obj.self_id),
-                category: ko.observable(obj.category),
-                title: ko.observable(obj.title),
-                description: ko.observable(obj.description),
-                price: ko.observable(obj.price),
-                moderate: ko.observable(obj.moderate),
-                image: ko.observable(obj.image)
-            });   
+            var newP = new newProduct(obj);
+            self.resultProd.push(newP);
         }
-        return self.res;
+        return self.resultProd;
     }, self);
 
     self.changeCategory = function(data, event){
@@ -174,16 +179,26 @@ function VM(appObj){
             var rewriteModal = $('[data-remodal-id=rewriteModal]').remodal();
             rewriteModal.close();
         }
-       
+        self.currentProd = ko.observable({});
     };
 
     self.removeProduct = function(data, product){
-        console.log(self.res());
-        self.res.remove(data);
+        self.resultProd.remove(data);
     };
 
-    self.addProduct = function(){
+    self.addProduct = function(product){
+        var addModal = $('[data-remodal-id=addModal]').remodal();
+        addModal.open();
+        var obj = {self_id: product.self_id()};
+        self.currentProd(new newProduct(obj) );
+    };
 
+    self.saveProduct = function(data, event){
+        event.preventDefault();
+        self.resultProd.unshift(self.currentProd());
+        var addModal = $('[data-remodal-id=addModal]').remodal();
+        addModal.close();
+        self.currentProd(new newProduct());
     }
 
    

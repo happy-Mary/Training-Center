@@ -90,7 +90,7 @@ nav {
 .menu li a:focus {
     color: #fff;
     display: block;
-    padding: 5px 0;
+    padding: 10px 0;
     border-top: 4px solid #009900;
     border-bottom: 4px solid #009900;
     border-right: 2px solid #009900;
@@ -260,7 +260,8 @@ nav {
 }
 
 .loginModal form,
-.rewriteModal form {
+.rewriteModal form,
+.addModal form {
     width: 70%;
     margin: 0 auto;
 }
@@ -269,13 +270,23 @@ nav {
 .loginModal label,
 .rewriteModal input,
 .rewriteModal label,
-.rewriteModal textarea {
+.rewriteModal textarea,
+.addModal input,
+.addModal label,
+.addModal textarea {
     width: 100%;
     display: block;
     padding: 10px 5px;
 }
 
-.rewriteModal button {margin-top: 1rem;}
+.rewriteModal button,
+.addModal button {margin-top: 1rem;}
+
+.addModal select{
+    display: block;
+    width: 100%;
+    padding: 7px;
+}
 
 /* Change Autocomplete styles in Chrome*/
 input:-webkit-autofill,
@@ -288,7 +299,7 @@ textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-  border: 1px solid green;
+  border: 2px solid green;
   -webkit-box-shadow: 0 0 0px 1000px #fff inset;
   transition: background-color 5000s ease-in-out 0s;
 }
