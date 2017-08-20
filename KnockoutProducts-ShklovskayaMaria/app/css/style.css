@@ -245,7 +245,6 @@ nav {
     top: 0;
     left: 0;
     font-size: 1.3rem;
-    /*display: none; */
 }
 
 .items-goods .item:hover {
@@ -339,4 +338,49 @@ select:-webkit-autofill:focus {
     border: 2px solid green;
     -webkit-box-shadow: 0 0 0px 1000px #fff inset;
     transition: background-color 5000s ease-in-out 0s;
+}
+
+@media (max-width: 768px) {
+    .shopContainer .items-goods .item {
+        width: 45%;
+    }
+    .paginate {
+        display: none;
+    }
+    header button {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 568px) {
+    .shopContainer .items-goods .item {
+        width: 90%;
+    }
+    .items-goods {
+        justify-content: center;
+    }
+    .menu {
+        display: block;
+    }
+    .menu li {
+        width: 100%;
+        margin: 0 auto;
+    }
+    .menu li a,
+    .menu li a:hover,
+    .menu li a:active,
+    .menu li a:focus {
+        border-width: 4px;
+        border-bottom-width: 2px;
+    }
+    header {
+        justify-content: center;
+    }
+    header button {
+        width: 70%;
+        padding: 10px;
+    }
+    .show-more {
+        width: 70%;
+    }
 }
