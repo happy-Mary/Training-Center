@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +11,7 @@
     <link href="bower_components/remodal/dist/remodal-default-theme.css" rel="stylesheet">
     <link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="bower_components/normalize-css/normalize.css" rel="stylesheet">
-    <link  href="css/style.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -19,128 +20,129 @@
     <![endif]-->
 
     <script>
-      "use strict"
+        "use strict"
     </script>
-  </head>
-  <body>
-  <div class="shopContainer">
-    <!-- MODALS -->
-    <section class="modalWindows">
-         <!-- 1. Login modal  -->
-        <div class="remodal loginModal" data-remodal-id="loginModal">
-          <button data-remodal-action="close" class="remodal-close"></button>
-          <form action="" name="loginForm" data-bind="event: {submit: newUser}">
-                <label for="loginName">Enter your name:</label>
-                <input type="text" placeholder="Name" id="loginName" autofocus required>
-                <label for="loginPass">Enter your password:</label>
-                <input type="password" placeholder="Password" id="loginPass" required>
-                <p class="error-login"></p>
-                <div class="modal-footer">
-                  <button type="submit" class="remodal-confirm sendUserButton">Log in</button>
-                  <button data-remodal-action="cancel" class="remodal-cancel sendAnonimUser">Log in as Anonim</button>
-                </div>
-            </form>
-        </div>
-        <!-- 2. Description modal  -->
-        <div class="remodal readModal" data-remodal-id="readModal">
-          <button data-remodal-action="close" class="remodal-close"></button>
-          <h2 data-bind="text: readData.title"></h2>
-          <img data-bind="attr: {src: readData.image}" width = "50%">
-          <p class='price' data-bind="text: readData.price"></p>
-          <p data-bind="text: readData.description"></p>
-        </div>
-        <!-- 3. Rewrite modal  -->
-        <div class="remodal rewriteModal" data-remodal-id="rewriteModal">
-          <button data-remodal-action="close" class="remodal-close"></button>
-          <form action="" name="itemForm"> 
-                <label for="itemRewriteId">Product id:</label>
-                <input type="number" id="itemRewriteId" disabled data-bind="value: rewriteData().self_id">
-                <label for="itemRewriteTitle">Title:</label>
-                <input type="text" id="itemRewriteTitle" required data-bind="value: rewriteData().title">
-                <label for="itemRewritePrice">Price:</label>
-                <input type="number" id="itemRewritePrice" required data-bind="value: rewriteData().price">
-                <label for="itemRewriteDescr">Description:</label> 
-                <textarea rows="6"  id="itemRewriteDescr" data-bind="value: rewriteData().description"></textarea>
-                <div class="modal-footer">
-                  <button type="submit" class="remodal-confirm saveChanges" data-bind="click: $root.saveRewriteProduct">Save changes</button>
-                </div>
-            </form> 
-        </div>
-        <!-- 4. Add new Item modal  -->
-         <div class="remodal addModal" data-remodal-id="addModal">
-          <button data-remodal-action="close" class="remodal-close"></button>
-          <form action="" name="addItemForm"> 
-              <!-- category -->
-              <label for="itemCategory">Choose category:</label>
-              <select id="itemCategory" required  data-bind="value: currentProd().category">
+</head>
+
+<body>
+    <div class="shopContainer">
+        <!-- MODALS -->
+        <section class="modalWindows">
+            <!-- 1. Login modal  -->
+            <div class="remodal loginModal" data-remodal-id="loginModal">
+                <button data-remodal-action="close" class="remodal-close"></button>
+                <form action="" name="loginForm" data-bind="event: {submit: newUser}">
+                    <label for="loginName">Enter your name:</label>
+                    <input type="text" placeholder="Name" id="loginName" autofocus required>
+                    <label for="loginPass">Enter your password:</label>
+                    <input type="password" placeholder="Password" id="loginPass" required>
+                    <p class="error-login"></p>
+                    <div class="modal-footer">
+                        <button type="submit" class="remodal-confirm">Log in</button>
+                        <button data-remodal-action="cancel" class="remodal-cancel" data-bind="click: anonimUser">Log in as Anonim</button>
+                    </div>
+                </form>
+            </div>
+            <!-- 2. Description modal  -->
+            <div class="remodal readModal" data-remodal-id="readModal">
+                <button data-remodal-action="close" class="remodal-close"></button>
+                <h2 data-bind="text: readData.title"></h2>
+                <img data-bind="attr: {src: readData.image}" width="50%">
+                <p class='price' data-bind="text: readData.price"></p>
+                <p data-bind="text: readData.description"></p>
+            </div>
+            <!-- 3. Rewrite modal  -->
+            <div class="remodal rewriteModal" data-remodal-id="rewriteModal">
+                <button data-remodal-action="close" class="remodal-close"></button>
+                <form action="" name="itemForm">
+                    <label for="itemRewriteId">Product id:</label>
+                    <input type="number" id="itemRewriteId" disabled data-bind="value: rewriteData().self_id">
+                    <label for="itemRewriteTitle">Title:</label>
+                    <input type="text" id="itemRewriteTitle" required data-bind="value: rewriteData().title">
+                    <label for="itemRewritePrice">Price:</label>
+                    <input type="number" id="itemRewritePrice" required data-bind="value: rewriteData().price">
+                    <label for="itemRewriteDescr">Description:</label>
+                    <textarea rows="6" id="itemRewriteDescr" data-bind="value: rewriteData().description"></textarea>
+                    <div class="modal-footer">
+                        <button type="submit" class="remodal-confirm saveChanges" data-bind="click: $root.saveRewriteProduct">Save changes</button>
+                    </div>
+                </form>
+            </div>
+            <!-- 4. Add new Item modal  -->
+            <div class="remodal addModal" data-remodal-id="addModal">
+                <button data-remodal-action="close" class="remodal-close"></button>
+                <form action="" name="addItemForm">
+                    <!-- category -->
+                    <label for="itemCategory">Choose category:</label>
+                    <select id="itemCategory" required data-bind="value: currentProd().category">
                 <option value="">Choose</option>
                 <option value="tablets">Tablets</option>
                 <option value="laptops">Laptops</option>
                 <option value="phones">Phones</option>
                 <option value="desktops">Desktops</option>
               </select>
-              <!-- title  -->
-                <label for="itemAddTitle">Title:</label>
-                <input type="text" id="itemAddTitle" required data-bind="value: currentProd().title">
-              <!-- price  -->
-                <label for="itemAddPrice">Price:</label>
-                <input type="number" id="itemAddPrice" required data-bind="value: currentProd().price">
-              <!--description  -->
-              <label for="itemAddDescr">Description:</label> 
-              <textarea rows="6" id="itemAddDescr" data-bind="value: currentProd().description"></textarea>
-              <button type="submit" class="remodal-confirm addNewItem" data-bind="click: $root.saveProduct">Save changes</button>
-            </form> 
-        </div>
-        <!-- MODAL ENDS  -->
-    </section>
-
-    <!-- log in  -->
-    <header>
-      <button class="loginButton" data-remodal-target="loginModal">Log in</button>
-    </header>
-    <!-- menu  -->
-    <nav>
-      <ul class="menu">
-         <li><a href="#" class="btn" data-bind="click: changeCategory">phones</a></li>
-         <li><a href="#" class="btn" data-bind="click: changeCategory">tablets</a></li>
-         <li><a href="#" class="btn" data-bind="click: changeCategory">laptops</a></li>
-         <li><a href="#" class="btn" data-bind="click: changeCategory">desktops</a></li>
-         <li><a href="#" class="btn active" data-bind="click: changeCategory">all</a></li>
-      </ul>
-    </nav>
-    <main>
-      <!-- changing grid  -->
-      <section class="paginate">
-                <input type="radio" name="paginate" id="show2" value='2' data-bind="event: {change: changeGrid}">
-                <label for ='show2'>2</label>
-                <input type="radio" name="paginate" id="show4" value='4' data-bind="event: {change: changeGrid}" checked>
-                <label for ='show4'>4</label>
-              <input type="radio" name="paginate" id="show6" data-bind="event: {change: changeGrid}"  value='6'>
-              <label  for ='show6'>6</label>
-      </section>
-        <!--  main content -->
-      <section class="items-goods show4"  data-bind="foreach: BuildData()">
-        <div class="item">
-            <div class='item-content'>
-                <p class='price'  data-bind="text: price"></p>
-                <img width='100%'  data-bind="attr : {src: image}"/>
-                <h4 data-bind="text: title"></h4>
+                    <!-- title  -->
+                    <label for="itemAddTitle">Title:</label>
+                    <input type="text" id="itemAddTitle" required data-bind="value: currentProd().title">
+                    <!-- price  -->
+                    <label for="itemAddPrice">Price:</label>
+                    <input type="number" id="itemAddPrice" required data-bind="value: currentProd().price">
+                    <!--description  -->
+                    <label for="itemAddDescr">Description:</label>
+                    <textarea rows="6" id="itemAddDescr" data-bind="value: currentProd().description"></textarea>
+                    <button type="submit" class="remodal-confirm addNewItem" data-bind="click: $root.saveProduct">Save changes</button>
+                </form>
             </div>
-              <div class="item-buttons">
-                <button class="open-but" data-bind="click: $root.readProduct"><i class="fa fa-eye" aria-hidden="true"></i></span></button> 
-                <button class="rewrite-but" data-bind="enable: self_id() === $root.user().userId || $root.user().role==='admin', click: $root.rewriteProduct"><i class="fa fa-pencil" aria-hidden="true"></i></span></button>
-                <button class="remove-but" data-bind="enable: self_id() === $root.user().userId || $root.user().role==='admin', click: $root.removeProduct"><i class="fa fa-trash" aria-hidden="true"></i></button>
-                <button class="add-but" data-bind="enable: $root.user, click: $root.addProduct"><i class="fa fa-plus" aria-hidden="true"></i></span></button>
-            </div> 
-             <span class='item-label'>my</span>  
-        </div>
-      </section>
-      <!-- show more button  -->
-      <!-- <div> -->
-        <button class="show-more">show more</button>
-      <!-- </div> -->
-    </main>
-  </div>
+            <!-- MODAL ENDS  -->
+        </section>
+
+        <!-- log in  -->
+        <header>
+            <button class="loginButton" data-remodal-target="loginModal" data-bind="text: (user().name)?'Hello, ' + user().name : 'Log in'"></button>
+        </header>
+        <!-- menu  -->
+        <nav>
+            <ul class="menu">
+                <li><a href="#" class="btn" data-bind="click: changeCategory">phones</a></li>
+                <li><a href="#" class="btn" data-bind="click: changeCategory">tablets</a></li>
+                <li><a href="#" class="btn" data-bind="click: changeCategory">laptops</a></li>
+                <li><a href="#" class="btn" data-bind="click: changeCategory">desktops</a></li>
+                <li><a href="#" class="btn active" data-bind="click: changeCategory">all</a></li>
+            </ul>
+        </nav>
+        <main>
+            <!-- changing grid  -->
+            <section class="paginate">
+                <input type="radio" name="paginate" id="show2" value='2' data-bind="event: {change: changeGrid}, checked: checkedGridVal">
+                <label for='show2'>2</label>
+                <input type="radio" name="paginate" id="show4" value='4' checked="true" data-bind="event: {change: changeGrid}, checked: checkedGridVal">
+                <label for='show4'>4</label>
+                <input type="radio" name="paginate" id="show6" value='6' data-bind="event: {change: changeGrid}, checked: checkedGridVal">
+                <label for='show6'>6</label>
+            </section>
+            <!--  main content -->
+            <section class="items-goods show4" data-bind="foreach: BuildData()">
+                <div class="item" data-bind="visible: $index() < $root.toShow()">
+                    <div class='item-content'>
+                        <p class='price' data-bind="text: price"></p>
+                        <img width='100%' data-bind="attr : {src: image}" />
+                        <h4 data-bind="text: title"></h4>
+                    </div>
+                    <div class="item-buttons">
+                        <button class="open-but" data-bind="click: $root.readProduct"><i class="fa fa-eye" aria-hidden="true"></i></span></button>
+                        <button class="rewrite-but" data-bind="enable: self_id() === $root.user().userId || $root.user().role==='admin', click: $root.rewriteProduct"><i class="fa fa-pencil" aria-hidden="true"></i></span></button>
+                        <button class="remove-but" data-bind="enable: self_id() === $root.user().userId || $root.user().role==='admin', click: $root.removeProduct"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                        <button class="add-but" data-bind="enable: $root.user, click: $root.addProduct"><i class="fa fa-plus" aria-hidden="true"></i></span></button>
+                    </div>
+                    <span class='item-label'>my</span>
+                </div>
+            </section>
+            <!-- show more button  -->
+            <!-- <div> -->
+            <button class="show-more" data-bind="click: showMore, enable: $root.toShow()<$root.list().length">show more</button>
+            <!-- </div> -->
+        </main>
+    </div>
 
     <script src="bower_components/knockout/dist/knockout.js"></script>
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -148,6 +150,7 @@
 
     <script src="js/localStore.js"></script>
     <script src="js/viewModel.js"></script>
-    <script src="js/initApp.js"></script> 
-  </body>
+    <script src="js/initApp.js"></script>
+</body>
+
 </html>

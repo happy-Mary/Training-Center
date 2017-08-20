@@ -1,6 +1,6 @@
-var myApp = angular.module('myApp', []);
-myApp.controller('mainCtrl', function($scope) {
-    $scope.text = "I'm the main text and I'm glad you're reading me";
+{
+    "vsicons.presets.angular": false
+}   $scope.text = "I'm the main text and I'm glad you're reading me";
     $scope.open = false;
     $scope.closeModal = function() {
         $scope.open = false;
