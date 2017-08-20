@@ -1,11 +1,17 @@
-html {font-size: 16px;} 
+html {
+    font-size: 16px;
+}
+
 body {
     font-size: 100%;
-} 
-* {box-sizing: border-box;}
+}
+
+* {
+    box-sizing: border-box;
+}
 
 body a,
-a:hover, 
+a:hover,
 a:active,
 a:focus {
     cursor: pointer;
@@ -14,9 +20,19 @@ a:focus {
     outline: none;
 }
 
-p {margin-top: 0;}
+p {
+    margin-top: 0;
+}
 
-button, button:hover, button:active, button:focus {outline: none; border: none; cursor: pointer;}
+button,
+button:hover,
+button:active,
+button:focus {
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
 .shopContainer {
     width: 90%;
     display: block;
@@ -34,7 +50,13 @@ button[disabled]:hover {
     cursor: default;
 }
 
-input:focus, textarea:focus, select:focus {outline: none; border-style: solid; border-color: green;}
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-style: solid;
+    border-color: green;
+}
 
 header {
     padding-top: .5rem;
@@ -49,16 +71,16 @@ header button,
     color: white;
     padding: 5px;
     text-transform: uppercase;
-     font-weight: bold; 
+    font-weight: bold;
 }
 
 header button:active,
 .show-more:active {
-     background-color: #4380D3;
+    background-color: #4380D3;
 }
 
 nav {
-    margin: 1rem 0; 
+    margin: 1rem 0;
 }
 
 .menu {
@@ -68,6 +90,7 @@ nav {
     display: flex;
     justify-content: flex-end;
 }
+
 .menu li {
     list-style: none;
     width: 20%;
@@ -76,13 +99,18 @@ nav {
     font-weight: bold;
     background-color: #00cc66;
     -webkit-border-radius: 6px;
-            border-radius: 6px;
+    border-radius: 6px;
     -webkit-box-shadow: 0 10px 10px -1px rgba(0, 0, 0, 0.5);
-            box-shadow: 0 10px 10px -1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 10px -1px rgba(0, 0, 0, 0.5);
 }
 
-.menu li:first-child a {border-left: 4px solid #009900;}
-.menu li:last-child a  {border-right: 4px solid #009900;}
+.menu li:first-child a {
+    border-left: 4px solid #009900;
+}
+
+.menu li:last-child a {
+    border-right: 4px solid #009900;
+}
 
 .menu li a,
 .menu li a:hover,
@@ -96,7 +124,7 @@ nav {
     border-right: 2px solid #009900;
     border-left: 2px solid #009900;
     -webkit-border-radius: 6px;
-            border-radius: 6px;
+    border-radius: 6px;
 }
 
 .menu li a.active {
@@ -108,27 +136,30 @@ nav {
     display: flex;
     justify-content: flex-end;
 }
-.paginate > label {
-  text-align: center; 
-  color: #fff;
+
+.paginate>label {
+    text-align: center;
+    color: #fff;
 }
 
 .paginate label {
-  display: inline-block;
-  background-color: #204d74;
-  border: 3px solid #66b2ff; 
-  width: 40px;
-  height: 40px;
-  line-height: 34px;
-  margin-right: 5px;
-  cursor: pointer;
+    display: inline-block;
+    background-color: #204d74;
+    border: 3px solid #66b2ff;
+    width: 40px;
+    height: 40px;
+    line-height: 34px;
+    margin-right: 5px;
+    cursor: pointer;
 }
 
-.paginate input {display: none; }
+.paginate input {
+    display: none;
+}
 
-.paginate input:checked + label {
+.paginate input:checked+label {
     background-color: #204d74;
-    border-color: #122b40; 
+    border-color: #122b40;
 }
 
 .show-more {
@@ -137,26 +168,25 @@ nav {
     height: 40px;
     margin: 0 auto;
     -webkit-box-shadow: 0 10px 10px -1px rgba(0, 0, 0, 0.5);
-            box-shadow: 0 10px 10px -1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 10px -1px rgba(0, 0, 0, 0.5);
 }
 
-
 .items-goods {
-     display: flex; 
+    display: flex;
     flex-flow: row wrap;
-     justify-content: space-between; 
+    justify-content: space-between;
 }
 
 .items-goods.show4 .item {
-    width: 23%; 
+    width: 23%;
 }
 
 .items-goods.show2 .item {
-    width: 45%; 
+    width: 45%;
 }
 
 .items-goods.show6 .item {
-    width: 15%;  
+    width: 15%;
 }
 
 .items-goods .item {
@@ -171,7 +201,7 @@ nav {
     background-color: #e0e0e0;
     font-weight: bold;
     font-size: 1.3rem;
- }
+}
 
 .items-goods .item h4 {
     font-size: 1.4rem;
@@ -182,17 +212,17 @@ nav {
     position: absolute;
     top: 0;
     right: 0;
-     display: none;   
+    display: none;
     width: 40px;
     border-top-right-radius: 10px;
-} 
+}
 
 .items-goods .item-buttons>button {
-   width: 100%;
-   height: 40px;
-   background-color: #204d74;
-   color: #fff;
-} 
+    width: 100%;
+    height: 40px;
+    background-color: #204d74;
+    color: #fff;
+}
 
 .items-goods .item-buttons>button:hover,
 .items-goods .item-buttons>button:active {
@@ -202,7 +232,6 @@ nav {
 .items-goods .item-buttons>button:not(:last-child) {
     border-bottom: 1px solid #66b2ff;
 }
-
 
 .items-goods .item .item-label {
     width: 60px;
@@ -215,26 +244,32 @@ nav {
     position: absolute;
     top: 0;
     left: 0;
-    font-size: 1.3rem; 
-     display: none; 
-}  
+    font-size: 1.3rem;
+    /*display: none; */
+}
 
 .items-goods .item:hover {
     cursor: pointer;
     border-color: rgba(18, 43, 64, 0.4);
     -webkit-border-radius: 4px;
-            border-radius: 4px;
-}
-.items-goods .item:hover .item-content,
-.items-goods .item:hover .item-label {
-    opacity: .2; 
-}
-.items-goods .item:hover .item-buttons {
-      display: block;
+    border-radius: 4px;
 }
 
+.items-goods .item:hover .item-content,
+.items-goods .item:hover .item-label {
+    opacity: .2;
+}
+
+.items-goods .item:hover .item-buttons {
+    display: block;
+}
+
+
 /*Modal styles  */
-.modalWindows>button, .remodal-confirm, .remodal-cancel {
+
+.modalWindows>button,
+.remodal-confirm,
+.remodal-cancel {
     padding: 12px 10px;
     text-transform: uppercase;
 }
@@ -242,7 +277,7 @@ nav {
 .error-login {
     text-align: center;
     font-weight: bold;
-    height: 1.5rem; 
+    height: 1.5rem;
 }
 
 .readModal .price {
@@ -254,7 +289,7 @@ nav {
 .loginModal .error-login {
     text-align: center;
     font-weight: bold;
-      height: 2rem;  
+    height: 2rem;
     padding: .5rem;
     color: red;
 }
@@ -280,29 +315,28 @@ nav {
 }
 
 .rewriteModal button,
-.addModal button {margin-top: 1rem;}
+.addModal button {
+    margin-top: 1rem;
+}
 
-.addModal select{
+.addModal select {
     display: block;
     width: 100%;
     padding: 7px;
 }
 
+
 /* Change Autocomplete styles in Chrome*/
+
 input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus
-input:-webkit-autofill, 
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus input:-webkit-autofill,
 textarea:-webkit-autofill,
-textarea:-webkit-autofill:hover
-textarea:-webkit-autofill:focus,
+textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-  border: 2px solid green;
-  -webkit-box-shadow: 0 0 0px 1000px #fff inset;
-  transition: background-color 5000s ease-in-out 0s;
+    border: 2px solid green;
+    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+    transition: background-color 5000s ease-in-out 0s;
 }
-
-
-

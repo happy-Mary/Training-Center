@@ -124,7 +124,7 @@
             <section class="items-goods show4" data-bind="foreach: BuildData()">
                 <div class="item" data-bind="visible: $index() < $root.toShow()">
                     <div class='item-content'>
-                        <p class='price' data-bind="text: price"></p>
+                        <p class='price'><span data-bind="text: price"></span> $</p>
                         <img width='100%' data-bind="attr : {src: image}" />
                         <h4 data-bind="text: title"></h4>
                     </div>
@@ -134,13 +134,11 @@
                         <button class="remove-but" data-bind="enable: self_id() === $root.user().userId || $root.user().role==='admin', click: $root.removeProduct"><i class="fa fa-trash" aria-hidden="true"></i></button>
                         <button class="add-but" data-bind="enable: $root.user, click: $root.addProduct"><i class="fa fa-plus" aria-hidden="true"></i></span></button>
                     </div>
-                    <span class='item-label'>my</span>
+                    <span class='item-label' data-bind="visible: self_id() === $root.user().userId">my</span>
                 </div>
             </section>
             <!-- show more button  -->
-            <!-- <div> -->
             <button class="show-more" data-bind="click: showMore, enable: $root.toShow()<$root.list().length">show more</button>
-            <!-- </div> -->
         </main>
     </div>
 
@@ -148,6 +146,7 @@
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/remodal/dist/remodal.min.js"></script>
 
+    <script src="js/moduleModals.js"></script>
     <script src="js/localStore.js"></script>
     <script src="js/viewModel.js"></script>
     <script src="js/initApp.js"></script>

@@ -1,4 +1,5 @@
 function VM(appObj) {
+    var self = this;
     // Product class
     function newProduct(obj) {
         var obj = obj || {};
@@ -11,12 +12,27 @@ function VM(appObj) {
         this.image = (obj.image) ? ko.observable(obj.image) : ko.observable("img/no-photoI.gif");
     }
 
-    var self = this;
+    // sorting array to show users products first(on setting list and changeUser)
+    self.sortInitialArray = function(arr) {
+        arr.forEach(function(item, index) {
+            if (item.self_id === self.user().userId) {
+                var el = arr.splice(index, 1);
+                arr.unshift(el[0]);
+            }
+        });
+    };
+
+    self.user = ko.observable(appObj.user);
+
+    if (self.user().name) {
+        self.sortInitialArray(appObj.products);
+    }
     // initial products array
     self.list = ko.observableArray(appObj.products);
+
     // products with observable items by BuildData function
     self.resultProd;
-    self.user = ko.observable(appObj.user);
+
     // link to current product
     self.currentProd = ko.observable({});
     // to show data to read about product
@@ -39,7 +55,7 @@ function VM(appObj) {
     }, self);
 
     self.BuildData = ko.computed(function() {
-        var data = ko.unwrap(self.list);
+        var data = self.list();
         self.resultProd = ko.observableArray();
         for (var i in data) {
             var obj = data[i];
@@ -103,15 +119,19 @@ function VM(appObj) {
     };
 
     self.loginUser = function(obj) {
+        // cleaning input fields
+        $("#loginName").val("");
+        $("#loginPass").val("");
+        $('.error-login').html("");
         self.user(obj);
-        var loginModal = $('[data-remodal-id=loginModal]').remodal();
-        loginModal.close();
+        self.sortInitialArray(appObj.products);
+        self.list(appObj.products);
+        modals.loginClose();
     };
 
     self.anonimUser = function() {
         self.user('');
-        var loginModal = $('[data-remodal-id=loginModal]').remodal();
-        loginModal.close();
+        modals.loginClose();
     }
 
     self.readProduct = function(product) {
@@ -119,8 +139,7 @@ function VM(appObj) {
         self.readData.description(product.description());
         self.readData.image(product.image());
         self.readData.price(product.price());
-        var readModal = $('[data-remodal-id=readModal]').remodal();
-        readModal.open();
+        modals.readOpen();
     };
 
     self.rewriteProduct = function(product) {
@@ -130,19 +149,15 @@ function VM(appObj) {
         }
         self.rewriteData(obj);
         self.currentProd = product;
-
-        var rewriteModal = $('[data-remodal-id=rewriteModal]').remodal();
-        rewriteModal.open();
+        modals.rewriteOpen();
     };
 
     self.saveRewriteProduct = function(data, event, product) {
         event.preventDefault();
-
         for (key in self.rewriteData()) {
             var result = self.rewriteData()[key];
             self.currentProd[key](result);
-            var rewriteModal = $('[data-remodal-id=rewriteModal]').remodal();
-            rewriteModal.close();
+            modals.rewriteClose();
         }
         self.currentProd = ko.observable({});
     };
@@ -152,8 +167,7 @@ function VM(appObj) {
     };
 
     self.addProduct = function(product) {
-        var addModal = $('[data-remodal-id=addModal]').remodal();
-        addModal.open();
+        modals.addOpen();
         var obj = { self_id: self.user().userId };
         self.currentProd(new newProduct(obj));
     };
@@ -161,8 +175,7 @@ function VM(appObj) {
     self.saveProduct = function(data, event) {
         event.preventDefault();
         self.resultProd.unshift(self.currentProd());
-        var addModal = $('[data-remodal-id=addModal]').remodal();
-        addModal.close();
+        modals.addClose();
         self.currentProd(new newProduct());
     };
 
@@ -177,11 +190,7 @@ function VM(appObj) {
     }, self);
 
     self.user.subscribe(function() {
-        console.log("changed");
         localStorage.setItem('user', ko.toJSON(self.user()));
-        // (self.user().name) ? $(".loginButton").html("Hello, " + self.user().name): $(".loginButton").html("log in");
     }, self)
 
 }
-
-// create modals object with initialisation
