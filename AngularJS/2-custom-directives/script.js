@@ -1,11 +1,13 @@
-{
-    "vsicons.presets.angular": false
-}   $scope.text = "I'm the main text and I'm glad you're reading me";
+var myApp = angular.module('myApp', []);
+myApp.controller("mainCtrl", mainCtrl);
+
+function mainCtrl($scope){ 
+ $scope.text = "I'm the main text and I'm glad you're reading me";
     $scope.open = false;
     $scope.closeModal = function() {
         $scope.open = false;
     }
-});
+}
 
 myApp.directive('modal', function() {
     return {
