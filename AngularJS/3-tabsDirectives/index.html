@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tabs task</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src='app/tabs/tabsModule.js'></script>
+    <script src='app/tabs/tabDirective.js'></script>
+    <script src='app/tabs/paneDirective.js'></script>
+    <script src='app/initApp.js'></script>
+</head>
+<body ng-app = "tabsApp">
+    <div class="main-container" ng-controller="mainCtrl">
+        <h1>{{hello}}</h1>
+        <tabs-directive tabs-title="Profile tabs" info='tabsContent'>
+                <pane-directive ng-repeat="item in tabsContent" pane-title='item.title'>
+                    {{item.text}}
+                </pane-directive>
+        </tabs-directive>
+    </div>
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

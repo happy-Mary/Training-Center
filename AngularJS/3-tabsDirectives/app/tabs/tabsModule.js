@@ -1,0 +1,1 @@
+var tabsModule = angular.module('tabsModule', []);
