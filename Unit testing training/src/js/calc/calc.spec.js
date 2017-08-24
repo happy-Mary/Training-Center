@@ -6,7 +6,7 @@ describe('calculator', function(){
     }));
 
     it('first meaning is zero', function(){
-         var $scope = {};
+        var $scope = {};
         var controller = $controller('makeCalculation', { $scope: $scope });
         expect($scope.z).toEqual(0);
     });
