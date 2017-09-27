@@ -2,30 +2,39 @@ var imgs = document.querySelectorAll('.images>img');
 var targetCont = document.querySelectorAll('.target');
 
 var targEl = {
-    elem: ''
+    elem: '',
+    container: ''
 };
 
 imgs.forEach(function(img) {
-    img.addEventListener('dragstart', dragStart, false);
+    img.addEventListener('dragstart', handleDragStart, false);
+    img.addEventListener('dragend', handleDragEnd, false);
 });
 
-targetCont.forEach(function(cont){
-    cont.addEventListener('dragover', dragOver, false);
-    cont.addEventListener('drop', function(ev) {
-        ev.preventDefault();
-        dropIt(cont);
-    }, false);
+targetCont.forEach(function(cont) {
+    cont.addEventListener('dragover', handleDragOver, false);
+    cont.addEventListener('drop', handleDrop, false);
+    cont.addEventListener('dragleave', handleDragLeave, false);
 });
 
-function dragStart(ev) {
+function handleDragStart(ev) {
     targEl.elem = ev.target;
-    ev.dataTransfer.setData("text", '');
 }
 
-function dragOver(ev) {
+function handleDragOver(ev) {
     ev.preventDefault();
+    targEl.container = this;
+    ev.currentTarget.classList.add('over');
 }
 
-function dropIt(ev) {
-    ev.appendChild(targEl.elem);
+function handleDrop(ev) {
+    ev.currentTarget.appendChild(targEl.elem);
+}
+
+function handleDragLeave(e) {
+    targEl.container.classList.remove('over');
+}
+
+function handleDragEnd() {
+    targEl.container.classList.remove('over');
 }
