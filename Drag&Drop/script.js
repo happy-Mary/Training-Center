@@ -19,6 +19,7 @@ targetCont.forEach(function(cont) {
 
 function handleDragStart(ev) {
     targEl.elem = ev.target;
+    ev.dataTransfer.setData('text', 'Hello Masha');
 }
 
 function handleDragOver(ev) {
@@ -29,6 +30,7 @@ function handleDragOver(ev) {
 
 function handleDrop(ev) {
     ev.currentTarget.appendChild(targEl.elem);
+    console.log(ev.dataTransfer.getData('text'));
 }
 
 function handleDragLeave(e) {
