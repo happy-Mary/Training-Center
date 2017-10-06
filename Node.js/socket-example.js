@@ -4,7 +4,7 @@ var app = express();
 var server = app.listen(1337);
 var io = require('socket.io').listen(server);
 
-//index.html
+// index.html 
 app.get('/', function(req, res) {
     var stream = fs.createReadStream('./index.html');
     stream.on('error', function(err) {
@@ -15,13 +15,9 @@ app.get('/', function(req, res) {
 
 // sockets
 io.sockets.on('connection', function(client) {
-    // send a message to the client every five seconds
-    setInterval(function() {
-        client.emit('From server', { message: 'Ping' + new Date() });
-    }, 5000);
 
     // send a message to the client every five seconds
-    client.on('client_event', function(msg) {
-        console.log(msg);
-    });
+    setInterval(function() {
+        client.emit('from_server', { message: 'Ping ' + new Date() });
+    }, 5000);
 });
