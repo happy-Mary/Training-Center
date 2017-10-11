@@ -1,4 +1,4 @@
-"ssking user for numbers"
+"asking user for numbers"
 def getNumbers():
     numbers = []
     num = None
@@ -10,11 +10,20 @@ def getNumbers():
     return numbers
 
 "generating list"
-def generateNumbers():
-    outputNumbers = []
-    filtered = filter(lambda x: x%2 == 0 and x > 0, getNumbers())
+outputNumbers = []
 
-    for i in map(lambda x: x*10, filtered):
-        outputNumbers.append(i)
-    print(outputNumbers)
+def filterNums():
+    indexIterable = 0
+    for num in getNumbers():
+        if indexIterable%2 is 0:
+            print(indexIterable)
+            yield num
+        indexIterable+=1
+
+for i in map(lambda x: x*10, filterNums()):
+    outputNumbers.append(i)
+
+print(outputNumbers)
+
+
 

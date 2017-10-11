@@ -4,7 +4,7 @@ def filterIterable(iterable, predicat):
 
 numbers = [4, 7, 10, 3, 6, 8, 1, 2]
 def isPositive(num):
-   return True if num>3 else False
+   return num>3 
 
 result = filterIterable(numbers, isPositive)
 
