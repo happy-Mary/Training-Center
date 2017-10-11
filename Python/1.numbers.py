@@ -1,22 +1,24 @@
 def getNum(a, b):
     
     if not isinstance(a, int) or not isinstance(b, int):
-        print('Not numbers')
-        return
+        return 'Not numbers'
+    a_rest = a%2 == 0
+    b_rest = b%2 == 0
 
-    if a%2 == 0 and b%2 == 0:
-        print(a * b)
-    elif a%2 != 0 and b%2 != 0:
-        print(a + b)
+    if a_rest and b_rest:
+        return a * b
+    elif not a_rest and not b_rest:
+        return a + b
     else:
-        x = a if a%2 != 0 else b
-        print(x)
-    return
+        x = a if a_rest else b
+        return x
+    
 
-getNum(2, 4)
-getNum(7, 3)
-getNum(7, 4)
-getNum(4, 9)
-getNum('b', 9)
-getNum(4, 'c')
-getNum('f', 'd')
+
+print(getNum(2, 4))
+print(getNum(7, 3))
+print(getNum(7, 4))
+print(getNum(4, 9))
+print(getNum('b', 9))
+print(getNum(4, 'c'))
+print(getNum('f', 'd'))
