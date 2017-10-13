@@ -8,5 +8,5 @@ for letter1 in string1:
     pos2 = 0
     for letter2 in string2:
         pos2 += 1
-        if letter2 is letter1:
+        if letter2 == letter1 and letter2 != " ":
             print(letter1, '-первая строка = ', pos1, ', вторая строка = ', pos2)
