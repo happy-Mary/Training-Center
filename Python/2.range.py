@@ -15,7 +15,7 @@ def myRange(*args):
         while start<stop:
             yield start
             start+=1
-    elif len(args) == 3 and args[2] > 0:
+    elif len(args) == 3 and args[2] > 0: #is it right for negative numbers?
         start = args[0]
         stop = args[1]
         step = args[2]
