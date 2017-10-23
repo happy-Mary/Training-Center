@@ -1,15 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>server-3</title>
 </head>
 
 <body>
-    <p>HELLO</p>
-</body>
+    <div id="messages"></div>
 
-</html>
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io.connect(window.location.href);
+        socket.on('from_server', function(data) {
+            $('#messages').append('<p>' + data.message + '</p>');
+            socket.emit('client_event', {
+                data: 'pong ' + new Date()
+            });
+        });
+    </script>
+</body>
