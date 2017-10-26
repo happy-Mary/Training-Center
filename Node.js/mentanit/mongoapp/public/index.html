@@ -144,6 +144,7 @@
         // нажимаем на ссылку Изменить
         $("body").on("click", ".editLink", function () {
             var id = $(this).data("id");
+            console.log(id);
             GetUser(id);
         })
         // нажимаем на ссылку Удалить
