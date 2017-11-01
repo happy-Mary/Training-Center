@@ -8,11 +8,19 @@ def classify(data, x=0.0, y=0.0, k=3):
     return sorted(d.items(), key=lambda x:-x[1])[0][0]
 
 def getFileData():
-    data = readFile()
+    f = open("data.txt")
+    lines = []
+    for line in f:
+        line = line.strip('\n').replace('"', '').split(',')
+        line[1] = float(line[1])
+        line[2] = float(line[2])
+        lines.append(line)
+    f.close()
+    return lines
 
-# raw = getFileData()
+raw = getFileData()
 
-# while True:
-#     x = float(input("X = "))
-#     y = float(input("Y = "))
-#     print(classify(raw, x, y, 3))
+while True:
+    x = float(input("X = "))
+    y = float(input("Y = "))
+    print(classify(raw, x, y, 3))

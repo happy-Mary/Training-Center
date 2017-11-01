@@ -79,7 +79,7 @@ app.put("/api/users", jsonParser, function(req, res){
     const userName = req.body.name;
     const userAge = req.body.age;
    
-    mongoClient.connect(url, function(err, db){
+    mongoClient.connect(url, function(err, db) {
       db.collection("users").findOneAndUpdate({_id: id}, { $set: {age: userAge, name: userName}},
            {returnOriginal: false },function(err, result){
            
