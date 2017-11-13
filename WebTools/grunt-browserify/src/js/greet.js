@@ -1,0 +1,1 @@
+module.exports = function (name) { return "Hello my friend " + name; }
