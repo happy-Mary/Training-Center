@@ -1,0 +1,20 @@
+{
+  "name": "gruntcustom-tasks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "browserify-build": "browserify src/js/number.js -o script-nogrunt.js",
+    "start": "grunt start && grunt finish"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-browserify": "^5.2.0"
+  },
+  "dependencies": {
+    "mathjs": "^3.16.5"
+  }
+}
