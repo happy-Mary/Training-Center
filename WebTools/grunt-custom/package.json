@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "browserify-build": "browserify src/js/number.js -o script-nogrunt.js",
-    "start": "grunt start && grunt finish"
+    "browserify-build": "browserify src/js/number.js -o build/script-nogrunt.js",
+    "start": "grunt start | npm run browserify-build && grunt finish"
   },
   "author": "",
   "license": "ISC",
