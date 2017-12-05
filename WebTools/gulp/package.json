@@ -1,11 +1,13 @@
 {
-  "name": "gulp",
+  "name": "gulptask",
   "version": "1.0.0",
   "description": "",
   "main": "myConfig.js",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-uglify": "^3.0.0"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
