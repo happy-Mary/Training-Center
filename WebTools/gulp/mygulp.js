@@ -8,8 +8,11 @@ module.exports = {
         extension = filesrc[0].split('.')[filesrc.length - 1];
 
         var t = fs.createReadStream(filesrc[0]);
-        console.log(t);
         return t;
+
+        // return t.on('data', (chunk) => {
+        //     console.log(`Received ${chunk.length} bytes of data.`);
+        // });
         
         // var liner = new Stream.Transform( { objectMode: true } )
         // liner.push(filesrc[0]); 
