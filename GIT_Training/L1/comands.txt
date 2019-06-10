@@ -1,0 +1,10 @@
+1.	git config --list
+2.	git config --global user.name “Dmitry Kavtur"
+3.	git init
+4.	git clone
+5.	git add
+6.	git diff
+7.	git diff --staged
+8.	git status
+9.	git status -s
+10.	git commit 

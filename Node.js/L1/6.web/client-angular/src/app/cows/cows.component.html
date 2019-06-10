@@ -1,0 +1,11 @@
+<h2>Cows:</h2>
+<div>
+  <input #newCow
+         (keyup.enter)="addCow(newCow.value)"
+         (blur)="addCow(newCow.value); newCow.value='' ">
+
+  <button (click)="addCow(newCow.value)">Add Cow</button>
+</div>
+<ul>
+  <li *ngFor="let cow of cows">{{cow.name}}</li>
+</ul>

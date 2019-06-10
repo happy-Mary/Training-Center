@@ -1,0 +1,38 @@
+{
+  "name": "nodejs-training",
+  "version": "1.0.0",
+  "description": "JavaScript history\r Node.js History",
+  "main": "server.js",
+  "scripts": {
+    "install": "cd client-angular && npm install --dev",
+    "postinstall": "cd client-angular && \"node_modules/.bin/ng\" build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://VladimirYurkevich@bitbucket.org/VladimirYurkevich/nodejs-training.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/VladimirYurkevich/nodejs-training#readme",
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "body-parser": "^1.17.2",
+    "compression": "^1.7.0",
+    "connect-timeout": "^1.9.0",
+    "cookie-parser": "^1.4.3",
+    "crypto": "^1.0.1",
+    "debug": "^3.0.0",
+    "express": "^4.15.4",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.5",
+    "firebase": "^4.5.0",
+    "lodash": "^4.17.4",
+    "passport": "^0.4.0",
+    "passport-facebook-token": "^3.3.0",
+    "path": "^0.12.7",
+    "serve-favicon": "^2.4.3"
+  },
+  "engines": {
+    "node": "8.7.0"
+  }
+}

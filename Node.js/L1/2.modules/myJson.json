@@ -1,0 +1,7 @@
+{
+    "foo": "bar",
+    "cookie": {
+        "chocolate": true,
+        "count": 5
+    }
+}

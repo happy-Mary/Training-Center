@@ -1,0 +1,19 @@
+{
+  "name": "nodejs-tutorial",
+  "version": "1.0.0",
+  "description": "Coolest node.js tutorial ever",
+  "main": "index.js",
+  "dependencies": {
+    "lodash": "^4.17.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "bla",
+    "bla"
+  ],
+  "author": "Vladimir Yurkevich",
+  "license": "ISC"
+}
